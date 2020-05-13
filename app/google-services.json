@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "26116765014",
+    "firebase_url": "https://lllhkt-shop.firebaseio.com",
+    "project_id": "lllhkt-shop",
+    "storage_bucket": "lllhkt-shop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:26116765014:android:5936873dc813d47f3612f7",
+        "android_client_info": {
+          "package_name": "com.kynguyen.shop_3hkt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "26116765014-s352ftobqc2l800eisf6aqnr9auihemg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kynguyen.shop_3hkt",
+            "certificate_hash": "d194eb47fee7f39fbbe366307bf2e41c7a995ca7"
+          }
+        },
+        {
+          "client_id": "26116765014-glicmns934s4l1pcrklc5r5f38vr0uo1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGwZdqzNN8dVwPOoOLGKEwCTyI07ADCsQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "26116765014-glicmns934s4l1pcrklc5r5f38vr0uo1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

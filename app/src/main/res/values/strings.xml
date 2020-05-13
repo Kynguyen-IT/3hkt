@@ -1,0 +1,7 @@
+<resources>
+  <string name="app_name">3hkt</string>
+  <string name="title_shop">Shop</string>
+  <string name="title_search">Search</string>
+  <string name="title_cart">Cart</string>
+  <string name="title_profile">Account</string>
+</resources>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".SignUpActivity"
+  android:background="@drawable/b6"
+  >
+
+  <TextView
+    android:id="@+id/title_sign_up"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Create Account"
+    android:layout_marginTop="100dp"
+    android:textAlignment="center"
+    android:textColor="@color/colorPrimary"
+    android:textSize="50dp"
+    android:fontFamily="@font/bangersregular"
+    android:layout_marginBottom="15dp"
+    ></TextView>
+
+
+
+  <EditText
+    android:id="@+id/register_username_input"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:layout_below="@+id/title_sign_up"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/input_design"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:hint="Name"
+    android:inputType="text"
+    android:textColor="@color/white"
+    android:textColorHint="@color/white"
+    android:textSize="17sp"
+    android:textStyle="bold"
+    />
+
+  <EditText
+    android:id="@+id/register_phone_number_input"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/register_username_input"
+    android:padding="20dp"
+    android:background="@drawable/input_design"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginRight="15dp"
+    android:hint="Phone Number"
+    android:inputType="number"
+    android:textColor="@color/white"
+    android:textColorHint="@color/white"
+    android:textSize="17sp"
+    android:textStyle="bold"
+    />
+
+
+  <EditText
+    android:id="@+id/register_password_input"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/register_phone_number_input"
+    android:padding="20dp"
+    android:background="@drawable/input_design"
+    android:layout_marginTop="6dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:hint="Password"
+    android:inputType="textPassword"
+    android:textColor="@color/white"
+    android:textColorHint="@color/white"
+    android:textSize="17sp"
+    android:textStyle="bold"
+    />
+
+
+  <Button
+    android:id="@+id/register_btn"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/register_password_input"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:background="@drawable/buttons"
+    android:padding="17dp"
+    android:textAllCaps="false"
+    android:text="Create Account"
+    android:textColor="#fff"
+    android:textSize="18sp"
+    />
+
+  <RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/login_btn"
+    android:layout_centerHorizontal="true"
+    android:layout_marginBottom="50dp"
+    >
+
+    <TextView
+      android:id="@+id/text_account"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="@color/colorPrimary"
+      android:text="Already have a Account?"
+      android:textSize="14dp"
+      android:layout_alignParentBottom="true"
+      ></TextView>
+
+    <TextView
+      android:id="@+id/sign_in_btn"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="5dp"
+      android:layout_toRightOf="@+id/text_account"
+      android:text="Sign in"
+      android:textSize="14dp"
+      android:textColor="@color/colorText"
+      android:textStyle="italic"
+      android:layout_alignParentBottom="true"
+      ></TextView>
+
+  </RelativeLayout>
+
+</RelativeLayout>
