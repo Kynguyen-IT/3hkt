@@ -43,6 +43,7 @@ public class AdminActivity extends AppCompatActivity {
                 startActivity(new Intent(AdminActivity.this, AdminProductsActivity.class));
             }
         });
+
     }
 
     private void mapping() {

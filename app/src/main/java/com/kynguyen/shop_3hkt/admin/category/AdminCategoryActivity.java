@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -21,6 +21,7 @@ import com.kynguyen.shop_3hkt.Model.Categories;
 import com.kynguyen.shop_3hkt.R;
 import com.kynguyen.shop_3hkt.ViewHolder.adminCategoryViewHolder;
 import com.kynguyen.shop_3hkt.admin.AdminActivity;
+import com.squareup.picasso.Picasso;
 
 public class AdminCategoryActivity extends AppCompatActivity {
   private FontAwesome close;
@@ -66,7 +67,8 @@ public class AdminCategoryActivity extends AppCompatActivity {
 
       @Override
       protected void onBindViewHolder(@NonNull adminCategoryViewHolder holder, int position, @NonNull Categories model) {
-        holder.name_category.setText(model.getName());
+        holder.textView.setText(model.getName());
+        Picasso.get().load(model.getImage()).fit().into(holder.imageView);
       }
     };
     recyclerView.setAdapter(adapter);
@@ -76,7 +78,7 @@ public class AdminCategoryActivity extends AppCompatActivity {
   private void mapping() {
     recyclerView= findViewById(R.id.category_list);
     recyclerView.setHasFixedSize(true);
-    layoutManager = new LinearLayoutManager(this);
+    layoutManager = new GridLayoutManager(this,3);
     recyclerView.setLayoutManager(layoutManager);
     close = findViewById(R.id.close_admin_category);
     add = findViewById(R.id.add_categories_floating);
