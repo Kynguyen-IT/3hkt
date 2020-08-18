@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.category.AdminCategoryActivity"
+    android:background="#f1f1f1"
+    >
+
+    <RelativeLayout
+        android:id="@+id/heard_admin_category"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentTop="true"
+        >
+
+        <com.kynguyen.shop_3hkt.FontAwesome
+            android:id="@+id/close_admin_category"
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content"
+            android:text="&#xf053;"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            >
+        </com.kynguyen.shop_3hkt.FontAwesome>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Categories"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            >
+        </TextView>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@id/title_lists_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="List category"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@+id/heard_admin_category"
+        android:textSize="14dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="5dp"
+        ></TextView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/category_list"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/title_lists_category"
+        >
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+       android:id="@+id/add_categories_floating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/add"
+        >
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+</RelativeLayout>

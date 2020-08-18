@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingActivity"
+    android:background="#f1f1f1"
+    >
+
+    <RelativeLayout
+        android:id="@+id/rlll1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentTop="true"
+        >
+
+        <com.kynguyen.shop_3hkt.FontAwesome
+            android:id="@+id/close_setting"
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content"
+            android:text="&#xf053;"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            >
+        </com.kynguyen.shop_3hkt.FontAwesome>
+
+        <TextView
+            android:id="@+id/back_shop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:layout_marginRight="15dp"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            >
+        </TextView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rlll1"
+        android:layout_marginTop="10dp"
+        >
+        <RelativeLayout
+            android:id="@+id/setting_account_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/title_setting_account_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Account Setting"
+                android:layout_marginBottom="5dp"
+                android:textSize="13dp"
+                android:layout_marginLeft="15dp"
+                ></TextView>
+
+            <LinearLayout
+                android:id="@+id/information_user_settings"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/colorText"
+                android:layout_below="@+id/title_setting_account_profile"
+                android:layout_gravity="center"
+
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Information &amp; Contact"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="13dp"
+                    android:textColor="#000"
+                    android:layout_marginLeft="15dp"
+                    ></TextView>
+
+                <com.kynguyen.shop_3hkt.FontAwesome
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_gravity="center_vertical"
+                    android:text="&#xf054;"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    android:layout_marginRight="15dp"
+                    >
+                </com.kynguyen.shop_3hkt.FontAwesome>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/password_account_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/setting_account_profile"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/colorText"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Password"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="13dp"
+                    android:textColor="#000"
+                    android:layout_marginLeft="15dp"
+                    ></TextView>
+
+                <com.kynguyen.shop_3hkt.FontAwesome
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_gravity="center_vertical"
+                    android:text="&#xf054;"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    android:layout_marginRight="15dp"
+                    >
+                </com.kynguyen.shop_3hkt.FontAwesome>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

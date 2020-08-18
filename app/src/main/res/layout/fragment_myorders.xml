@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout_myOrders"
+        android:layout_width="match_parent"
+        app:tabBackground="@color/colorText"
+        android:layout_height="wrap_content"
+        app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
+        app:tabSelectedTextColor="@color/colorPrimaryDark"
+        >
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/ongoing_myOrders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ongoing" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/history_myOrders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="History"
+            android:textAllCaps="false" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/cart_myOrders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cart"
+            android:textAllCaps="true" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager_myOrders"
+        android:layout_below="@+id/tab_layout_myOrders"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        ></androidx.viewpager.widget.ViewPager>
+</RelativeLayout>

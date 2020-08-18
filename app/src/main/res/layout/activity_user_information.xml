@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".member.UserInformationActivity">
+
+    <RelativeLayout
+        android:id="@+id/rlll_user_information"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentTop="true"
+        >
+
+        <com.kynguyen.shop_3hkt.FontAwesome
+            android:id="@+id/close_user_information"
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content"
+            android:text="&#xf053;"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            >
+        </com.kynguyen.shop_3hkt.FontAwesome>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Information"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            >
+        </TextView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/Avatar_account_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlll_user_information"
+        android:layout_marginTop="10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorText"
+            android:layout_gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="2dp"
+            >
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/user_profile_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/profile"
+                android:layout_marginLeft="10dp"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/colorPrimary"
+                />
+
+            <com.kynguyen.shop_3hkt.FontAwesome
+                android:id="@+id/change_avatar_user_information"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_gravity="center"
+                android:text="Change avatar &#xf054;"
+                android:textSize="16dp"
+                android:textColor="#000"
+                android:layout_marginRight="15dp"
+                >
+            </com.kynguyen.shop_3hkt.FontAwesome>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/Name_User_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Avatar_account_profile"
+        android:layout_marginTop="5dp"
+        >
+        <RelativeLayout
+            android:id="@+id/display_name_user_information_container"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorText"
+            android:layout_marginTop="2dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:layout_centerVertical="true"
+                android:textSize="14dp"
+                android:textColor="#000"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentLeft="true"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/display_name_user_information"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/font_awesome_Name"
+                android:text="Name"
+                android:layout_centerVertical="true"
+                android:textSize="14dp"
+                android:textColor="@color/colorAccent"
+                android:layout_marginRight="10dp"
+                ></TextView>
+
+
+            <com.kynguyen.shop_3hkt.FontAwesome
+                android:id="@+id/font_awesome_Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="&#xf054;"
+                android:layout_alignParentRight="true"
+                android:textSize="14dp"
+                android:textColor="#000"
+                android:layout_marginRight="15dp"
+                >
+            </com.kynguyen.shop_3hkt.FontAwesome>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/email_user_information_container"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/display_name_user_information_container"
+            android:background="@color/colorText"
+            android:layout_marginTop="2dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:layout_centerVertical="true"
+                android:textSize="14dp"
+                android:textColor="#000"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentLeft="true"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/email_user_information"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/font_awesome_Email"
+                android:text="Email"
+                android:layout_centerVertical="true"
+                android:textSize="14dp"
+                android:textColor="@color/colorAccent"
+                android:layout_marginRight="10dp"
+                ></TextView>
+
+
+            <com.kynguyen.shop_3hkt.FontAwesome
+                android:id="@+id/font_awesome_Email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="&#xf054;"
+                android:layout_alignParentRight="true"
+                android:textSize="14dp"
+                android:textColor="#000"
+                android:layout_marginRight="15dp"
+                >
+            </com.kynguyen.shop_3hkt.FontAwesome>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/Phone_information_container"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/email_user_information_container"
+            android:background="@color/colorText"
+            android:layout_marginTop="2dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone"
+                android:layout_centerVertical="true"
+                android:textSize="14dp"
+                android:textColor="#000"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentLeft="true"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/phone_user_information"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/font_awesome_phone"
+                android:text="Phone"
+                android:layout_centerVertical="true"
+                android:textSize="14dp"
+                android:textColor="@color/colorAccent"
+                android:layout_marginRight="10dp"
+                ></TextView>
+
+
+            <com.kynguyen.shop_3hkt.FontAwesome
+                android:id="@+id/font_awesome_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="&#xf054;"
+                android:layout_alignParentRight="true"
+                android:textSize="14dp"
+                android:textColor="#000"
+                android:layout_marginRight="15dp"
+                >
+            </com.kynguyen.shop_3hkt.FontAwesome>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/address_information_container"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/Phone_information_container"
+            android:background="@color/colorText"
+            android:layout_marginTop="2dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:layout_centerVertical="true"
+                android:textSize="14dp"
+                android:textColor="#000"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentLeft="true"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/address_user_information"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/font_awesome_address"
+                android:text="Address"
+                android:layout_centerVertical="true"
+                android:textSize="14dp"
+                android:textColor="@color/colorAccent"
+                android:layout_marginRight="10dp"
+                ></TextView>
+
+
+            <com.kynguyen.shop_3hkt.FontAwesome
+                android:id="@+id/font_awesome_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="&#xf054;"
+                android:layout_alignParentRight="true"
+                android:textSize="14dp"
+                android:textColor="#000"
+                android:layout_marginRight="15dp"
+                >
+            </com.kynguyen.shop_3hkt.FontAwesome>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/edit_user"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/input_design"
+        android:layout_centerHorizontal="true"
+        android:text="Update User"
+        android:textColor="@color/colorAccent"
+        android:textAllCaps="false"
+        android:textSize="14dp"
+        android:layout_marginBottom="50dp"
+        />
+</RelativeLayout>

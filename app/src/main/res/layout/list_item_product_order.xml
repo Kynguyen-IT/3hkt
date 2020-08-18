@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border_bottom"
+    >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        >
+        <TextView
+            android:id="@+id/quantity_and_name_product_order_holder_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_weight="0.5"
+            android:textAlignment="textStart"
+            android:textColor="#444"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/price_product_order_holder_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textEnd"
+            android:textSize="14dp"
+            android:layout_weight="1"
+            android:textColor="#444"
+            ></TextView>
+
+    </LinearLayout>
+</RelativeLayout>

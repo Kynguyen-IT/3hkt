@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
+        <ImageView
+            android:id="@+id/image_product_cart_holder"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            ></ImageView>
+
+        <RelativeLayout
+            android:id="@+id/content_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/image_product_cart_holder"
+            android:layout_centerVertical="true"
+            >
+
+            <TextView
+                android:id="@+id/name_product_cart_holder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="name"
+                android:textSize="16dp"
+                android:textColor="#000"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/address_product_cart_holder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name_product_cart_holder"
+                android:text="address"
+                android:layout_marginTop="5dp"
+                android:textSize="12dp"
+                android:maxLines="1"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/price_product_cart_holder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/address_product_cart_holder"
+                android:text="address"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="3dp"
+                android:textColor="#000"
+                android:textSize="14dp"
+                android:maxLines="1"
+                ></TextView>
+            <TextView
+                android:id="@+id/quantity_product_cart_holder"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="5dp"
+                android:text="sdgsfdhgf"
+                android:textSize="12dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/price_product_cart_holder"
+                android:layout_below="@+id/address_product_cart_holder"
+                ></TextView>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f1f1"
+    tools:context=".CheckoutOrder">
+
+
+
+    <RelativeLayout
+        android:id="@+id/rlll_checkoutOrder"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentTop="true"
+        >
+
+        <com.kynguyen.shop_3hkt.FontAwesome
+            android:id="@+id/close_checkout_order"
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content"
+            android:text="&#xf053;"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            >
+        </com.kynguyen.shop_3hkt.FontAwesome>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comfirm Order"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            >
+        </TextView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/box_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:layout_below="@+id/rlll_checkoutOrder"
+        android:background="@color/white"
+        >
+        <ImageView
+            android:id="@+id/image_user"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            ></ImageView>
+
+        <RelativeLayout
+            android:id="@+id/content_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/image_user"
+            android:layout_centerVertical="true"
+            >
+
+            <TextView
+                android:id="@+id/name_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="name"
+                android:textSize="16dp"
+                android:textColor="#000"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/phone_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/name_user"
+                android:textSize="16dp"
+                android:layout_marginLeft="10dp"
+                android:text="phone"
+                android:textColor="#000"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/address_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name_user"
+                android:text="address"
+                android:layout_marginTop="5dp"
+                android:textSize="12dp"
+                android:maxLines="1"
+                ></TextView>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ship_checkout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorText"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:layout_below="@+id/box_user"
+        >
+
+        <com.kynguyen.shop_3hkt.FontAwesome
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="&#xf017;"
+            android:textSize="14dp"
+            android:textColor="#000"
+            android:layout_marginLeft="15dp"
+            >
+        </com.kynguyen.shop_3hkt.FontAwesome>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ship"
+            android:layout_gravity="center_vertical"
+            android:textSize="14dp"
+            android:textColor="#000"
+            android:layout_marginLeft="10dp"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/time_date_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="14dp"
+            android:textColor="#000"
+            android:layout_marginLeft="10dp"
+            ></TextView>
+
+        <com.kynguyen.shop_3hkt.FontAwesome
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_gravity="center_vertical"
+            android:text="&#xf054;"
+            android:textSize="14dp"
+            android:textColor="#000"
+            android:layout_marginRight="15dp"
+            >
+        </com.kynguyen.shop_3hkt.FontAwesome>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/order_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorText"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_below="@+id/ship_checkout"
+        >
+        <TextView
+            android:id="@+id/title_order_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Order Summary"
+            android:textColor="#000"
+            android:textAlignment="center"
+            android:textSize="16dp"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/item_order_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Order Summary"
+            android:textSize="13dp"
+            android:layout_below="@+id/title_order_summary"
+            ></TextView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_product_order_"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="3dp"
+            android:layout_below="@id/item_order_summary"
+            ></androidx.recyclerview.widget.RecyclerView>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/footer_product_profile"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/border_top"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        >
+        <TextView
+            android:id="@+id/total_price_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="40000đ"
+            android:textAlignment="center"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:textFontWeight="400"
+            ></TextView>
+
+        <Button
+            android:id="@+id/order_btn"
+            android:layout_width="110dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/buttons"
+            android:layout_centerVertical="true"
+            android:textAllCaps="false"
+            android:text="Order"
+            android:textColor="#fff"
+            android:textSize="13sp"
+            />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,7 +1,16 @@
 <resources>
-  <string name="app_name">3hkt</string>
-  <string name="title_shop">Shop</string>
-  <string name="title_search">Search</string>
-  <string name="title_cart">Cart</string>
-  <string name="title_profile">Account</string>
+    <string name="app_name">3hkt</string>
+    <string name="title_shop">Shop</string>
+    <string name="title_search">Search</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_profile">Account</string>
+    <string name="add">Add</string>
+
+    <string name="fa_icon_areachart">&#xf1fe;</string>
+    <string name="fa_icon_piechart">&#xf200;</string>
+    <string name="fa_icon_linechart">&#xf201;</string>
+    <string name="fa_icon_add">&#xf067;</string>
+    <string name="map_key" translatable="false">AIzaSyBP7zlwJkyskUyeewBUrSlxo8BNicfTwsQ </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

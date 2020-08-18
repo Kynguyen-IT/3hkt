@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".Profile_product"
+    >
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        >
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@color/colorText"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            >
+
+            <ImageView
+                android:id="@+id/image_product_profile"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"
+                />
+            
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/backgroud_color_bottom_dark"
+                ></View>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.MaterialComponents.ActionBar"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <com.kynguyen.shop_3hkt.FontAwesome
+                        android:id="@+id/close_product_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_height="wrap_content"
+                        android:text="&#xf060;"
+                        android:layout_centerVertical="true"
+                        android:textColor="#333"
+                        android:textSize="20dp"
+                        android:layout_marginTop="10dp"
+                        >
+                    </com.kynguyen.shop_3hkt.FontAwesome>
+
+                    <ImageView
+                        android:id="@+id/save_product_profile"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_save"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="15dp"
+                        ></ImageView>
+
+                </RelativeLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-8dp"
+        android:overScrollMode="never"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <RelativeLayout
+            android:id="@+id/main_product_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <RelativeLayout
+                android:id="@+id/heard_container_main_product_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/radius_top"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                >
+                <RelativeLayout
+                    android:id="@+id/name_container_product_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    >
+                    <com.kynguyen.shop_3hkt.FontAwesome
+                        android:id="@+id/armor_icon_product_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:text="&#xf2e7;"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="16dp"></com.kynguyen.shop_3hkt.FontAwesome>
+
+                    <TextView
+                        android:id="@+id/name_product_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:layout_toRightOf="@id/armor_icon_product_profile"
+                        android:text="Title"
+                        android:layout_centerVertical="true"
+                        android:textColor="#000"
+                        android:textSize="22dp"></TextView>
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+                    android:id="@+id/address_container_product_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/name_container_product_profile"
+                    android:layout_marginRight="10dp">
+
+                    <com.kynguyen.shop_3hkt.FontAwesome
+                        android:id="@+id/map_icon_product_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:text="&#xf3c5;"
+                        android:textColor="#e20303"
+                        android:textSize="12dp"></com.kynguyen.shop_3hkt.FontAwesome>
+
+                    <TextView
+                        android:id="@+id/address_product_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_toRightOf="@+id/map_icon_product_profile"
+                        android:layout_weight="0.20"
+                        android:maxLines="1"
+                        android:text="17/10/2020"
+                        android:textColor="@color/colorPrimaryDark"></TextView>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/date_container_product_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/address_container_product_profile"
+                   >
+
+                    <com.kynguyen.shop_3hkt.FontAwesome
+                        android:id="@+id/calendar_icon_product_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:text="&#xf073;"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="12dp"
+                        ></com.kynguyen.shop_3hkt.FontAwesome>
+
+                    <TextView
+                        android:id="@+id/date_product_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_toRightOf="@+id/calendar_icon_product_profile"
+                        android:layout_weight="0.20"
+                        android:maxLines="1"
+                        android:textSize="12dp"
+                        android:text="17/10/2020"
+                        android:textColor="@color/colorPrimaryDark"></TextView>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/description_container_product_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/date_container_product_profile"
+                    android:layout_marginTop="3dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/title_description_product_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Description: "
+                        android:textColor="#000"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/description_product_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/title_description_product_profile"
+                        android:text="fsdafds"></TextView>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/price_container_product_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/description_container_product_profile">
+
+                    <TextView
+                        android:id="@+id/title_price_product_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Price: "
+                        android:textColor="#000"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/price_product_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/title_price_product_profile"
+                        android:text="999999"
+                        android:textSize="12dp"
+                        android:textColor="@color/colorPrimary"></TextView>
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/item_container_main_product_profile"
+                android:layout_width="match_parent"
+                android:padding="5dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/heard_container_main_product_profile"
+                >
+                <TextView
+                    android:id="@+id/title_item_container_main_product_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Product"
+                    android:layout_marginBottom="3dp"
+                    android:textColor="#000"
+                    android:textSize="18dp"
+                    android:gravity="center"
+                    ></TextView>
+
+                <RelativeLayout
+                    android:id="@+id/product_item_box_container_main_product_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:background="@drawable/radius_around"
+                    android:layout_below="@+id/title_item_container_main_product_profile"
+                    >
+                    <ImageView
+                        android:id="@+id/image_product_item_container_main_product_profile"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:scaleType="fitXY"
+                        android:gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:layout_centerVertical="true"
+                        ></ImageView>
+
+                    <TextView
+                        android:id="@+id/name_item_container_main_product_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/image_product_item_container_main_product_profile"
+                        android:textColor="#000"
+                        android:gravity="center"
+                        android:textSize="16dp"
+                        android:layout_marginBottom="1dp"
+                        ></TextView>
+
+                    <TextView
+                        android:id="@+id/price_item_container_main_product_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/name_item_container_main_product_profile"
+                        android:layout_toRightOf="@id/image_product_item_container_main_product_profile"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16dp"
+                        android:gravity="center"
+                        android:layout_marginBottom="3dp"
+                        ></TextView>
+
+                    <RelativeLayout
+                        android:id="@+id/elegant_number_product_product"
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:gravity="center"
+                        android:layout_toRightOf="@id/image_product_item_container_main_product_profile"
+                        android:layout_below="@+id/price_item_container_main_product_profile"
+                        >
+                        <Button
+                            android:id="@+id/decrease_product_profile"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:text="-"
+                            android:textAlignment="center"
+                            android:textColor="#b5b5b5"
+                            android:background="@drawable/button_raduis_decrease"
+                            ></Button>
+
+                        <TextView
+                            android:id="@+id/quantity_value_product_profile"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/decrease_product_profile"
+                            android:text="0"
+                            android:textAlignment="center"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="18dp"
+                            android:textColor="#333"
+                            ></TextView>
+
+                        <Button
+                            android:id="@+id/increase_product_profile"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:text="+"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorText"
+                            android:background="@drawable/button_radius"
+                            android:layout_toRightOf="@id/quantity_value_product_profile"
+                            ></Button>
+
+                    </RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:id="@+id/footer_product_profile"
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/border_top"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:elevation="9999dp"
+        >
+        <ImageView
+            android:id="@+id/image_footer_product_profile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/cartmo"
+            android:layout_centerVertical="true"
+            ></ImageView>
+
+        <TextView
+            android:id="@+id/badge"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="-9dp"
+            android:layout_alignRight="@id/image_footer_product_profile"
+            android:background="@drawable/badge"
+            android:text="0"
+            android:textColor="@color/colorText"
+            android:gravity="center"
+            android:textSize="10dp"
+         />
+
+        <TextView
+            android:id="@+id/quantity_cart_footer_product_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/image_footer_product_profile"
+            android:text="40000đ"
+            android:textAlignment="center"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:textSize="18dp"
+            android:textColor="#333"
+            android:textFontWeight="400"
+            ></TextView>
+
+        <Button
+            android:id="@+id/checkout_btn_footer_product_profile"
+            android:layout_width="110dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/buttons"
+            android:layout_centerVertical="true"
+            android:textAllCaps="false"
+            android:text="Check Out"
+            android:textColor="#fff"
+            android:textSize="13sp"
+            />
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

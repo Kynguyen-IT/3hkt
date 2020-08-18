@@ -1,15 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-  xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-  android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#f1f1f1"
+    >
 
-  <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:text="home"
-    android:textSize="70dp"
-    android:layout_centerInParent="true"
-    ></TextView>
+  <RelativeLayout
+      android:id="@+id/heard_home"
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      android:background="@color/colorText"
+      android:layout_alignParentTop="true"
+      android:paddingLeft="15dp"
+      >
+    <com.kynguyen.shop_3hkt.FontAwesome
+        android:id="@+id/search_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&#xf002;"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:textColor="#bbb"
+        android:textSize="13dp"
+        >
+    </com.kynguyen.shop_3hkt.FontAwesome>
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:hint="Find places, Item, Address..."
+        android:textSize="13dp"
+        android:paddingLeft="30dp"
+        android:background="@drawable/input_design"
+        android:cursorVisible="false"
+        android:focusable="false"
+        >
+    </EditText>
+  </RelativeLayout>
+
+  <RelativeLayout
+      android:id="@+id/container_home"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/heard_home"
+      android:background="@color/colorText"
+      android:layout_marginTop="5dp"
+      >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@id/container_header_home"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="5dp"
+        >
+
+      <com.kynguyen.shop_3hkt.FontAwesome
+          android:id="@+id/close_admin_category"
+          android:layout_width="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_height="wrap_content"
+          android:text="&#xf3c5;"
+          android:layout_marginRight="10dp"
+          android:layout_centerVertical="true"
+          android:textColor="#e20303"
+          android:textSize="14dp"
+          >
+      </com.kynguyen.shop_3hkt.FontAwesome>
+
+      <TextView
+          android:id="@+id/title_home"
+          android:layout_width="match_parent"
+          android:layout_height="20dp"
+          android:text=""
+          android:layout_marginTop="2dp"
+          android:textColor="@color/colorPrimaryDark"
+          android:layout_weight="0.20"
+          android:maxLines="1"
+          android:layout_marginLeft="15dp"
+          ></TextView>
+
+    </RelativeLayout>
+
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/image_slider"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="15dp"
+        android:layout_below="@+id/container_header_home"
+        app:corner_radius="10"
+        android:layout_width="match_parent"
+        app:placeholder="@color/white"
+        android:layout_height="130dp"
+        app:auto_cycle="true"
+        app:period="3000"
+        app:delay="3000"/>
+  </RelativeLayout>
+
+
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/list_Cates_home"
+      android:layout_marginTop="10dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/container_home"
+      android:layout_marginBottom="5dp"
+      ></androidx.recyclerview.widget.RecyclerView>
+
+
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/list_product"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/list_Cates_home"
+      ></androidx.recyclerview.widget.RecyclerView>
+
 
 </RelativeLayout>

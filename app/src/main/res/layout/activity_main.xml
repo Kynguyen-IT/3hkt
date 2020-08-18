@@ -15,24 +15,33 @@
     android:background="@drawable/logo"
     />
 
+  <ProgressBar
+      android:id="@+id/loading_login"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:layout_centerVertical="true"
+      android:layout_centerHorizontal="true"
+      android:visibility="invisible"
+      ></ProgressBar>
+
   <TextView
     android:id="@+id/title_main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@+id/logo_app"
     android:fontFamily="@font/bangersregular"
-    android:text="Shop Online"
+    android:text="Fast Food"
     android:layout_marginTop="150dp"
     android:textAlignment="center"
     android:textColor="@color/colorPrimaryDark"
-    android:textSize="70dp" />
+    android:textSize="60dp" />
 
   <TextView
     android:id="@+id/description_main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@+id/title_main"
-    android:text="Welcome You To Shop III-HKT"
+    android:text="Welcome You To Fast Food III-HKT "
     android:textSize="16dp"
     android:textColor="@color/colorPrimaryDark"
     android:textAlignment="center"

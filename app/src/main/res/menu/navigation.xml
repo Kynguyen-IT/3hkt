@@ -3,17 +3,18 @@
   <item
     android:id="@+id/nav_shop"
     android:icon="@drawable/store"
-    android:title="@string/title_shop" />
-
-  <item
-    android:id="@+id/nav_search"
-    android:icon="@drawable/search"
-    android:title="@string/title_search" />
+    android:title="@string/title_shop"
+      />
 
   <item
     android:id="@+id/nav_cart"
-    android:icon="@drawable/cart"
-    android:title="@string/title_cart" />
+    android:icon="@drawable/order"
+    android:title="My Orders" />
+
+  <item
+      android:id="@+id/nav_search"
+      android:icon="@drawable/love"
+      android:title="Saved" />
 
   <item
     android:id="@+id/nav_account"
