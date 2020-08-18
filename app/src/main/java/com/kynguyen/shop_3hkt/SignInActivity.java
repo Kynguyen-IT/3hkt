@@ -135,6 +135,7 @@ public class SignInActivity extends AppCompatActivity {
                     startActivity(intent);
                     Toast.makeText(SignInActivity.this, "login successfully", Toast.LENGTH_SHORT).show();
                     finish();
+
                 } else {
                     Toast.makeText(SignInActivity.this, "login error", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();

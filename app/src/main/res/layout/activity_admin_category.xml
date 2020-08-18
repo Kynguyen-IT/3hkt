@@ -42,24 +42,15 @@
         </TextView>
     </RelativeLayout>
 
-    <TextView
-        android:id="@id/title_lists_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="List category"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_below="@+id/heard_admin_category"
-        android:textSize="14dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="5dp"
-        ></TextView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/category_list"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_marginTop="5dp"
-        android:layout_below="@+id/title_lists_category"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_below="@+id/heard_admin_category"
         >
     </androidx.recyclerview.widget.RecyclerView>
 

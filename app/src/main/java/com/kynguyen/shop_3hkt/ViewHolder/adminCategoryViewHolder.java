@@ -9,13 +9,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.kynguyen.shop_3hkt.Intetfave.itemClickLitsner;
 import com.kynguyen.shop_3hkt.R;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class adminCategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-  public TextView name_category;
-  private itemClickLitsner listenr;
+  public CircleImageView imageView;
+  public TextView textView;
+  public itemClickLitsner listenr;
 
   public adminCategoryViewHolder(@NonNull View itemView) {
     super(itemView);
-    name_category = itemView.findViewById(R.id.text_Category_view_holder);
+    imageView = itemView.findViewById(R.id.image_cates_admin);
+    textView = itemView.findViewById(R.id.name_cates_admin);
   }
 
   @Override
