@@ -36,6 +36,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.kynguyen.shop_3hkt.MainActivity;
 import com.kynguyen.shop_3hkt.Model.Categories;
 import com.kynguyen.shop_3hkt.Model.Products;
 import com.kynguyen.shop_3hkt.Prevalent.Constants;
@@ -108,7 +109,7 @@ public class HomeFragment extends Fragment {
     locationRequest.setFastestInterval(3000);
     locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
-    LocationServices.getFusedLocationProviderClient(getActivity()).requestLocationUpdates(locationRequest, new LocationCallback() {
+    LocationServices.getFusedLocationProviderClient(this.getActivity()).requestLocationUpdates(locationRequest, new LocationCallback() {
       @Override
       public void onLocationResult(LocationResult locationResult) {
         super.onLocationResult(locationResult);
@@ -122,7 +123,6 @@ public class HomeFragment extends Fragment {
           location.setLatitude(latitude);
           location.setLongitude(longitude);
           fetchAddressFromLatLong(location);
-
         }
       }
     }, Looper.getMainLooper());

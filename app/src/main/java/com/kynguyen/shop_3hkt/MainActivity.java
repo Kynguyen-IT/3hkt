@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
 
   private void checkUserStatus() {
-    firebaseAuth = FirebaseAuth.getInstance();
     final FirebaseUser userStatus = firebaseAuth.getCurrentUser();
+//    firebaseAuth.addAuthStateListener();
     if (userStatus != null) {
       Uid = userStatus.getUid();
       FirebaseAuth.getInstance().getCurrentUser().reload();
@@ -102,5 +102,6 @@ public class MainActivity extends AppCompatActivity {
     title_view = (TextView) findViewById(R.id.title_main);
     description_view = (TextView) findViewById(R.id.description_main);
     progressBar = (ProgressBar) findViewById(R.id.loading_login);
+    firebaseAuth = FirebaseAuth.getInstance();
   }
 }

@@ -9,4 +9,12 @@ public class Prevalent {
     public static Role roleUser;
     public static final String Userphonekey = "UserPhone";
     public static final String Userpasswordkey = "UserPassword";
+
+    public static User getCurrentOnLineUsers() {
+        return currentOnLineUsers;
+    }
+
+    public static void setCurrentOnLineUsers(User currentOnLineUsers) {
+        Prevalent.currentOnLineUsers = currentOnLineUsers;
+    }
 }
