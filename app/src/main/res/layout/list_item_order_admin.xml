@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="@color/white"
+        >
+        <ImageView
+            android:id="@+id/image_user_order"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            ></ImageView>
+
+        <RelativeLayout
+            android:id="@+id/content_user_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/image_user_order"
+            android:layout_centerVertical="true"
+            >
+
+            <TextView
+                android:id="@+id/name_user_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="name"
+                android:textSize="16dp"
+                android:textColor="#000"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/phone_Order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/name_user_order"
+                android:textSize="16dp"
+                android:layout_marginLeft="10dp"
+                android:text="phone"
+                android:textColor="#000"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/address_user_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name_user_order"
+                android:text="address"
+                android:layout_marginTop="5dp"
+                android:textSize="12dp"
+                android:maxLines="1"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/date_time_user_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/address_user_order"
+                android:text="address"
+                android:layout_marginTop="5dp"
+                android:textSize="12dp"
+                android:maxLines="1"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/item_user_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/date_time_user_order"
+                android:text="address"
+                android:layout_marginTop="5dp"
+                android:textSize="12dp"
+                android:maxLines="1"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/total_user_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/item_user_order"
+                android:layout_below="@+id/date_time_user_order"
+                android:text="address"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="12dp"
+                android:maxLines="1"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/status_user_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/item_user_order"
+                android:text="address"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:textSize="12dp"
+                android:maxLines="1"
+                android:textColor="#000"
+                ></TextView>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

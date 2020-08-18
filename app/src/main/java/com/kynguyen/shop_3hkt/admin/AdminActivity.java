@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.kynguyen.shop_3hkt.HomeActivity;
 import com.kynguyen.shop_3hkt.R;
+import com.kynguyen.shop_3hkt.admin.Orders.AdminOrderActivity;
 import com.kynguyen.shop_3hkt.admin.Products.AdminProductsActivity;
 import com.kynguyen.shop_3hkt.admin.category.AdminCategoryActivity;
 
@@ -41,6 +42,13 @@ public class AdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AdminActivity.this, AdminProductsActivity.class));
+            }
+        });
+
+        ordersActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdminActivity.this, AdminOrderActivity.class));
             }
         });
 

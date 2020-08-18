@@ -101,8 +101,10 @@ public class CheckoutOrder extends AppCompatActivity {
         .child("Products").setValue(carts);
 
     HashMap<String,Object> data = new HashMap<>();
+    data.put("orderId", idOrder);
     data.put("name", Prevalent.currentOnLineUsers.getDisplayName());
     data.put("phone",Prevalent.currentOnLineUsers.getPhone());
+    data.put("image",Prevalent.currentOnLineUsers.getPhotoUrl());
     data.put("status", "pending");
     data.put("dateTime",time +" "+ date);
     data.put("address",addressUser);
