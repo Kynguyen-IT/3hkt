@@ -71,7 +71,7 @@ public class CheckoutOrder extends AppCompatActivity {
       @Override
       public void onClick(View v) {
         getInformationAndDataOrder();
-//        ref.removeValue();
+        ref.removeValue();
         showDiaLogOrder();
       }
     });
@@ -99,7 +99,6 @@ public class CheckoutOrder extends AppCompatActivity {
 
     refOrder.child("Orders").child(idOrder)
         .child("Products").setValue(carts);
-
 
     HashMap<String,Object> data = new HashMap<>();
     data.put("name", Prevalent.currentOnLineUsers.getDisplayName());

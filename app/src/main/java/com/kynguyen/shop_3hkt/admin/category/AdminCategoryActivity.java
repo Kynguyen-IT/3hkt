@@ -51,7 +51,6 @@ public class AdminCategoryActivity extends AppCompatActivity {
   @Override
   protected void onStart() {
     super.onStart();
-
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("categories");
     FirebaseRecyclerOptions<Categories> options = new FirebaseRecyclerOptions.Builder<Categories>()
         .setQuery(ref, Categories.class).build();

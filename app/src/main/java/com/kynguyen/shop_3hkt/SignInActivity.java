@@ -1,11 +1,7 @@
 package com.kynguyen.shop_3hkt;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
-
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -15,6 +11,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -179,7 +178,7 @@ public class SignInActivity extends AppCompatActivity {
                     userdata.put("phone","");
                     userdata.put("photoUrl", image);
                     HashMap<String, Object> roledata = new HashMap<>();
-                    roledata.put("admin", false);
+                    roledata.put("admin", true);
                     roledata.put("member",true);
                     mDatabase = FirebaseDatabase.getInstance().getReference();
                     mDatabase.child("users").child(Uid).setValue(userdata).addOnFailureListener(new OnFailureListener() {
