@@ -17,15 +17,16 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.kynguyen.shop_3hkt.Model.Products;
 import com.kynguyen.shop_3hkt.Prevalent.Prevalent;
 import com.kynguyen.shop_3hkt.ViewHolder.ShowProductsViewHolder;
 import com.squareup.picasso.Picasso;
 
+
 public class SearchActivity extends AppCompatActivity {
     private RecyclerView recyclerViewProduct;
+
     private SearchView searchView;
     private boolean status;
     DatabaseReference productsRef, refSave;
@@ -90,7 +91,6 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-//                Query query = productsRef.orderByChild("name").equalTo(newText);
                 FirebaseRecyclerOptions<Products> optionsProduct = new FirebaseRecyclerOptions.Builder<Products>()
                         .setQuery(productsRef.orderByChild("name").startAt(newText), Products.class).build();
 
@@ -131,36 +131,19 @@ public class SearchActivity extends AppCompatActivity {
                                 }
                             });
                         }
-//                        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                                Intent intent = new Intent(viewHome.getContext(), Profile_product.class);
-//                                intent.putExtra("pid", model.pid);
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(SearchActivity.this, Profile_product.class);
+                                intent.putExtra("pid", model.pid);
 //                                intent.putExtra("addressUser", addressUser);
-//                                startActivity(intent);
-//                            }
-//                        });
+                                startActivity(intent);
+                            }
+                        });
                     }
                 };
                 recyclerViewProduct.setAdapter(adapterProduct);
                 adapterProduct.startListening();
-//                query.addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        if (dataSnapshot.exists()) {
-//                            // dataSnapshot is the "issue" node with all children with id 0
-//                            for (DataSnapshot issue : dataSnapshot.getChildren()) {
-//                                // do something with the individual "issues"
-//                            }
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                    }
-//
-//                });
                 return false;
             }
         });
@@ -179,8 +162,34 @@ public class SearchActivity extends AppCompatActivity {
         searchView = findViewById(R.id.searchBar);
         backBtn = findViewById(R.id.close_search);
         // list product
-//        layoutManagerProduct = new LinearLayoutManager(getContext());
         recyclerViewProduct = findViewById(R.id.list_search_item);
         recyclerViewProduct.setHasFixedSize(true);
     }
 }
+
+
+//    private void search(String s) {
+//        Query query = productsRef.orderByChild("name").startAt(s).endAt(s + "\uf8ff");
+//
+//        query.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.hasChildren()) {
+//                    listProducts.clear();
+//                    for (DataSnapshot dss : dataSnapshot.getChildren()) {
+//                        final Products product = dss.getValue(Products.class);
+//                        listProducts.add(product);
+//                    }
+//
+////                    recyclerViewProduct.setAdapter(adapterProduct);
+////                    adapterProduct.startListening();
+////                    adapterProduct.notifyDataSetChanged();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
