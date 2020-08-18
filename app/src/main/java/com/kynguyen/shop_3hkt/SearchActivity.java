@@ -2,6 +2,7 @@ package com.kynguyen.shop_3hkt;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,8 +43,9 @@ public class SearchActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                String search = searchView.getQuery().toString();
                 FirebaseRecyclerOptions<Products> optionsProduct = new FirebaseRecyclerOptions.Builder<Products>()
-                        .setQuery(productsRef.orderByChild("name").startAt(query), Products.class).build();
+                        .setQuery(productsRef.orderByChild("name").startAt(search), Products.class).build();
 
                 FirebaseRecyclerAdapter<Products, ShowProductsViewHolder> adapterProduct = new FirebaseRecyclerAdapter<Products, ShowProductsViewHolder>(optionsProduct) {
                     @NonNull
@@ -91,8 +93,10 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                String search = searchView.getQuery().toString();
+                Log.d("AAA", search);
                 FirebaseRecyclerOptions<Products> optionsProduct = new FirebaseRecyclerOptions.Builder<Products>()
-                        .setQuery(productsRef.orderByChild("name").startAt(newText), Products.class).build();
+                        .setQuery(productsRef.orderByChild("name").startAt(search), Products.class).build();
 
                 FirebaseRecyclerAdapter<Products, ShowProductsViewHolder> adapterProduct = new FirebaseRecyclerAdapter<Products, ShowProductsViewHolder>(optionsProduct) {
                     @NonNull

@@ -18,7 +18,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".admin.Products.UpdateProductActivity"></activity>
+        <activity android:name=".SearchActivity" />
         <activity android:name=".admin.Orders.AdminOrderActivity" />
         <activity android:name=".CheckoutOrder" />
         <activity android:name=".Profile_product" />

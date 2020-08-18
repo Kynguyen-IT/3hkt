@@ -106,9 +106,9 @@ public class AddProduct extends AppCompatActivity {
     addressET.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-          Intent intent = new Intent(AddProduct.this, MapActivity.class);
-          startActivity(intent);
-          finish();
+        Intent intent = new Intent(AddProduct.this, MapActivity.class);
+        startActivity(intent);
+        finish();
       }
     });
 

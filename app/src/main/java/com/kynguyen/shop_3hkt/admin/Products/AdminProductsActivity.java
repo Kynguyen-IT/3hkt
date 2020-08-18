@@ -70,6 +70,15 @@ public class AdminProductsActivity extends AppCompatActivity {
         Picasso.get().load(model.getImage()).fit().into(holder.imageProduct);
         holder.description.setText(model.getDescription());
         holder.relativeLayout.setVisibility(View.INVISIBLE);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            Intent intent = new Intent(AdminProductsActivity.this, UpdateProductActivity.class);
+            intent.putExtra("pid", model.pid);
+            startActivity(intent);
+
+          }
+        });
       }
     };
     recyclerView.setAdapter(adapterProduct);

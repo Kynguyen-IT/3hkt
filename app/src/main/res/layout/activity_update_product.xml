@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.Products.AddProduct">
+    tools:context=".admin.Products.UpdateProductActivity">
 
     <RelativeLayout
-        android:id="@+id/heard_add_product"
+        android:id="@+id/heard_update_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -15,24 +15,24 @@
         >
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/image_product_change"
+            android:id="@+id/image_product_update"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/unnamed"
-            ></de.hdodenhof.circleimageview.CircleImageView>
+            />
 
         <TextView
-            android:id="@+id/add_image_product"
+            android:id="@+id/update_image_product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Add Image"
+            android:text="update Image"
             android:textSize="18dp"
             android:textColor="@color/colorAccent"
             android:textAlignment="center"
-            android:layout_below="@+id/image_product_change"
-            ></TextView>
+            android:layout_below="@+id/image_product_update"
+            />
 
     </RelativeLayout>
 
@@ -40,7 +40,7 @@
         android:id="@+id/container_update_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/heard_add_product"
+        android:layout_below="@+id/heard_update_product"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         >
@@ -51,11 +51,11 @@
             android:gravity="center_horizontal"
             >
             <EditText
-                android:id="@+id/name_update_product"
+                android:id="@+id/name_product_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name"
-                ></EditText>
+             />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,10 +69,10 @@
             android:visibility="visible">
 
             <EditText
-                android:id="@+id/description_update_product"
+                android:id="@+id/description_product_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Description"></EditText>
+                android:hint="Description" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -87,17 +87,17 @@
             android:visibility="visible">
 
             <EditText
-                android:id="@+id/price_update_product"
+                android:id="@+id/price_product_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:hint="Price"></EditText>
+                android:hint="Price" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/address_input_update"
+            android:id="@+id/updateress_input_update"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/price_input_update"
@@ -106,13 +106,12 @@
             android:visibility="visible">
 
             <EditText
-                android:id="@+id/address_update_product"
+                android:id="@+id/address_product_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Address"
+                android:hint="updateress"
                 android:maxLines="1"
-                android:focusable="false"
-                ></EditText>
+                android:focusable="false" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -121,16 +120,15 @@
             android:id="@+id/title_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/address_input_update"
+            android:layout_below="@+id/updateress_input_update"
             android:text="Category"
             android:textColor="@color/colorAccent"
             android:textSize="18dp"
             android:layout_marginTop="3dp"
-            android:layout_marginBottom="3dp"
-            ></TextView>
+            android:layout_marginBottom="3dp" />
 
         <Spinner
-            android:id="@+id/dynamic_spinner"
+            android:id="@+id/dynamic_spinner_update"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/title_category"
@@ -139,15 +137,15 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/update_user"
+        android:id="@+id/update_product"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/buttons"
         android:textColor="@color/colorText"
         android:textAllCaps="false"
-        android:textSize="15sp"
-        android:text="Add Product"
+        android:textSize="15dp"
+        android:text="Update"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp" />
 
