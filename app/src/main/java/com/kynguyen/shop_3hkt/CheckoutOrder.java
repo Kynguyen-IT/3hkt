@@ -43,6 +43,7 @@ public class CheckoutOrder extends AppCompatActivity {
   private DatabaseReference refOrder, refCart ,ref;
   private Button orderBtn, continueShoppingBtn;
   private Dialog dialog;
+  ArrayList<Cart> carts;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -71,20 +72,19 @@ public class CheckoutOrder extends AppCompatActivity {
       @Override
       public void onClick(View v) {
         getInformationAndDataOrder();
-        ref.removeValue();
+        carts.clear();
+//        ref.removeValue();
         showDiaLogOrder();
       }
     });
   }
 
   private void getInformationAndDataOrder() {
-
     final String idOrder = refOrder.child("Orders").push().getKey();
-    final ArrayList<Cart> carts = new ArrayList<Cart>();
+    carts = new ArrayList<Cart>();
     ref.addValueEventListener(new ValueEventListener() {
       @Override
       public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
         for (DataSnapshot areaSnapshot: dataSnapshot.getChildren()) {
           String id = areaSnapshot.getKey();
           Cart cart = dataSnapshot.child(id).getValue(Cart.class);

@@ -124,7 +124,7 @@ public class Profile_product extends AppCompatActivity {
         if (Prevalent.currentOnLineUsers != null){
           String userUid = Prevalent.currentOnLineUsers.uid;
           if (status == true) {
-            refSave.child("saves").child(productId).child(userUid).removeValue();
+            refSave.child("saves").child(productId).child(userUid).setValue(false);
             save.setImageResource(R.drawable.ic_save);
           } else {
             refSave.child("saves").child(productId).child(userUid).setValue(true);
@@ -200,6 +200,7 @@ public class Profile_product extends AppCompatActivity {
       }
     });
     // show list Product cart
+
     if (Prevalent.currentOnLineUsers != null) {
       showProductCartDialog();
       checkSumQuantityPrice(getSumQuantity, getTotalPrice);
@@ -278,27 +279,30 @@ public class Profile_product extends AppCompatActivity {
     refSave.child("saves").child(productId).child(Prevalent.currentOnLineUsers.getUid()).addValueEventListener(new ValueEventListener() {
       @Override
       public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-        if (dataSnapshot.getValue() == null) {
-          status = false;
-          HashMap<String,Object> savesproducts = new HashMap<>();
-          savesproducts.put("pid", productId);
-          savesproducts.put("name", nameProduct.getText().toString());
-          savesproducts.put("address", addressProduct.getText().toString());
-          savesproducts.put("image", getImage);
+        if (dataSnapshot.exists()){
+          if (dataSnapshot.getValue().equals(true)) {
+            status = true;
+            save.setImageResource(R.drawable.ic_saved);
+          } else {
+            status = false;
+            HashMap<String,Object> savesproducts = new HashMap<>();
+            savesproducts.put("pid", productId);
+            savesproducts.put("name", nameProduct.getText().toString());
+            savesproducts.put("address", addressProduct.getText().toString());
+            savesproducts.put("image", getImage);
 
-          refSave.child("saves").child(productId)
-              .updateChildren(savesproducts).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-              if (task.isSuccessful()) {
+            refSave.child("saves").child(productId)
+                .updateChildren(savesproducts).addOnCompleteListener(new OnCompleteListener<Void>() {
+              @Override
+              public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                }
               }
-            }
-          });
-          save.setImageResource(R.drawable.ic_save);
-        } else {
-          status = true;
-          save.setImageResource(R.drawable.ic_saved);
+            });
+            save.setImageResource(R.drawable.ic_save);
+          }
         }
+
       }
 
       @Override

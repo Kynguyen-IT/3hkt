@@ -51,10 +51,9 @@
   <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/list_saves_product_holder_View"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:paddingLeft="5dp"
       android:paddingRight="5dp"
-      android:layout_marginBottom="5dp"
       android:layout_marginTop="2dp"
       android:layout_below="@+id/header_saved"
       ></androidx.recyclerview.widget.RecyclerView>

@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,18 +14,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.kynguyen.shop_3hkt.Model.Saves;
 import com.kynguyen.shop_3hkt.Prevalent.Prevalent;
 import com.kynguyen.shop_3hkt.R;
 import com.kynguyen.shop_3hkt.ViewHolder.ShowSaveViewHolder;
+import com.squareup.picasso.Picasso;
 
 import io.paperdb.Paper;
 
 public class SavedFragment extends Fragment {
   private View savedView;
-  private DatabaseReference refSaved;
+  private DatabaseReference refSaved, ref;
   private RecyclerView recyclerViewListSave;
   private RelativeLayout save_show_no_Order;
   private RecyclerView.LayoutManager layoutManagerListSave;
@@ -36,7 +39,6 @@ public class SavedFragment extends Fragment {
     savedView = inflater.inflate(R.layout.fragment_saves,container, false);
     Paper.init(savedView.getContext());
     mapping();
-//    save_show_no_Order.setVisibility(View.INVISIBLE);
     return savedView;
   }
 
@@ -45,17 +47,36 @@ public class SavedFragment extends Fragment {
     super.onStart();
     if (Prevalent.currentOnLineUsers != null) {
       refSaved = FirebaseDatabase.getInstance().getReference().child("saves");
-
       FirebaseRecyclerOptions<Saves> options = new FirebaseRecyclerOptions.Builder<Saves>()
           .setQuery(refSaved, Saves.class).build();
 
       FirebaseRecyclerAdapter<Saves, ShowSaveViewHolder> adapter = new FirebaseRecyclerAdapter<Saves, ShowSaveViewHolder>(options) {
         @Override
-        protected void onBindViewHolder(@NonNull ShowSaveViewHolder holder, int position, @NonNull Saves model) {
+        protected void onBindViewHolder(@NonNull final ShowSaveViewHolder holder, int position, @NonNull final Saves model) {
 
-          holder.name.setText(model.getName());
-          holder.address.setText(model.getAddress());
-          Toast.makeText(savedView.getContext(), "dsafdgfhdjf", Toast.LENGTH_SHORT).show();
+          refSaved.child(model.pid).child(Prevalent.currentOnLineUsers.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+              if (dataSnapshot.exists()) {
+                if (dataSnapshot.getValue().equals(true)){
+                holder.name.setText(model.getName());
+                holder.address.setText(model.getAddress());
+                Picasso.get().load(model.getImage()).fit().into(holder.image);
+                save_show_no_Order.setVisibility(View.INVISIBLE);
+                } else {
+                  holder.relativeLayout.setVisibility(View.INVISIBLE);
+                  holder.relativeLayout.getLayoutParams().height = 0;
+                  holder.relativeLayout.getLayoutParams().width = 0;
+                }
+              }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+          });
+
 
         }
 

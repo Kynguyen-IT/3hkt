@@ -36,7 +36,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.kynguyen.shop_3hkt.MainActivity;
 import com.kynguyen.shop_3hkt.Model.Categories;
 import com.kynguyen.shop_3hkt.Model.Products;
 import com.kynguyen.shop_3hkt.Prevalent.Constants;
@@ -203,12 +202,14 @@ public class HomeFragment extends Fragment {
           refSave.child("saves").child(model.pid).child(Prevalent.currentOnLineUsers.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-              if (dataSnapshot.getValue() == null){
-                status = false;
-                holder.heart_product.setImageResource(R.drawable.ic_save);
-              } else {
-                status = true;
-                holder.heart_product.setImageResource(R.drawable.ic_saved);
+              if (dataSnapshot.exists()){
+                if (dataSnapshot.getValue().equals(true)){
+                  status = true;
+                  holder.heart_product.setImageResource(R.drawable.ic_saved);
+                } else {
+                  status = false;
+                  holder.heart_product.setImageResource(R.drawable.ic_save);
+                }
               }
             }
 
