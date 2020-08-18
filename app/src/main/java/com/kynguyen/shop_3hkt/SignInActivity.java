@@ -205,7 +205,7 @@ public class SignInActivity extends AppCompatActivity {
             userdata.put("phone", "");
             userdata.put("photoUrl", image);
             HashMap<String, Object> roledata = new HashMap<>();
-            roledata.put("admin", false);
+            roledata.put("admin", true);
             roledata.put("member", true);
             mDatabase = FirebaseDatabase.getInstance().getReference();
             mDatabase.child("users").child(Uid).setValue(userdata).addOnFailureListener(new OnFailureListener() {
