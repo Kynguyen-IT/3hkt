@@ -113,7 +113,7 @@ public class HomeFragment extends Fragment {
       @Override
       public void onLocationResult(LocationResult locationResult) {
         super.onLocationResult(locationResult);
-        LocationServices.getFusedLocationProviderClient(getActivity()).removeLocationUpdates(this);
+        LocationServices.getFusedLocationProviderClient(getContext()).removeLocationUpdates(this);
         if (locationResult != null && locationResult.getLocations().size() > 0) {
           int latestLocationIndex = locationResult.getLocations().size() - 1;
            latitude = locationResult.getLocations().get(latestLocationIndex).getLatitude();

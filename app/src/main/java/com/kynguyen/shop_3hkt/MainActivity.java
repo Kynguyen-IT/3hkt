@@ -92,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
         }
       });
 
+    } else {
+      Prevalent.currentOnLineUsers = null;
+      Prevalent.roleUser = null;
     }
   }
 

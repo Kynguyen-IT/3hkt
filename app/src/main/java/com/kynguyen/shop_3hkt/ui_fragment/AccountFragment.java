@@ -18,8 +18,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.kynguyen.shop_3hkt.HomeActivity;
 import com.kynguyen.shop_3hkt.MainActivity;
+import com.kynguyen.shop_3hkt.Model.Role;
+import com.kynguyen.shop_3hkt.Model.User;
 import com.kynguyen.shop_3hkt.Prevalent.Prevalent;
 import com.kynguyen.shop_3hkt.R;
 import com.kynguyen.shop_3hkt.SettingActivity;
@@ -98,18 +106,46 @@ public class AccountFragment extends Fragment {
     }
 
     private void checkUserLogin() {
-        if (firebaseAuth.getCurrentUser() != null) {
-            firebaseAuth.getInstance().getCurrentUser().reload();
+        final FirebaseUser userStatus = firebaseAuth.getCurrentUser();
+        if (userStatus != null) {
 //            Prevalent.setCurrentOnLineUsers(firebaseAuth.getCurrentUser());
-            usernameView.setText(Prevalent.currentOnLineUsers.getDisplayName());
-            Picasso.get().load(Prevalent.currentOnLineUsers.getPhotoUrl()).placeholder(R.drawable.profile).into(profileImageView);
-            header_account.setPadding(0, 80, 0, 0);
-            loginBtn.setVisibility(View.INVISIBLE);
-            logoutBtn.setVisibility(View.VISIBLE);
-            // check role user
-            if (Prevalent.roleUser.getAdmin() == false) {
-                Admin_account.setVisibility(View.INVISIBLE);
-            }
+            final String Uid = userStatus.getUid();
+            FirebaseAuth.getInstance().getCurrentUser().reload();
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference();
+            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        User userdata = dataSnapshot.child("users").child(Uid).getValue(User.class);
+                        Prevalent.currentOnLineUsers = userdata;
+                        Role roleUser = dataSnapshot.child("users").child(Uid).child("role").getValue(Role.class);
+                        Prevalent.roleUser = roleUser;
+                        usernameView.setText(userdata.getDisplayName());
+                        Picasso.get().load(userdata.getPhotoUrl()).placeholder(R.drawable.profile).into(profileImageView);
+                        header_account.setPadding(0, 80, 0, 0);
+                        loginBtn.setVisibility(View.INVISIBLE);
+                        logoutBtn.setVisibility(View.VISIBLE);
+                        // check role user
+                        if (roleUser.getAdmin() == false) {
+                            Admin_account.setVisibility(View.INVISIBLE);
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+//            usernameView.setText(Prevalent.currentOnLineUsers.getDisplayName());
+//            Picasso.get().load(Prevalent.currentOnLineUsers.getPhotoUrl()).placeholder(R.drawable.profile).into(profileImageView);
+//            header_account.setPadding(0, 80, 0, 0);
+//            loginBtn.setVisibility(View.INVISIBLE);
+//            logoutBtn.setVisibility(View.VISIBLE);
+//            // check role user
+//            if (Prevalent.roleUser.getAdmin() == false) {
+//                Admin_account.setVisibility(View.INVISIBLE);
+//            }
         } else {
             logoutBtn.setVisibility(View.INVISIBLE);
             Admin_account.setVisibility(View.INVISIBLE);

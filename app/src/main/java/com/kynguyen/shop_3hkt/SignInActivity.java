@@ -29,8 +29,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.kynguyen.shop_3hkt.Model.Role;
+import com.kynguyen.shop_3hkt.Model.User;
+import com.kynguyen.shop_3hkt.Prevalent.Prevalent;
 
 import java.util.HashMap;
 
@@ -54,8 +60,9 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
         mapping();
-
         mAuth = FirebaseAuth.getInstance();
+
+        updateUI(mAuth.getCurrentUser());
         Paper.init(this);
         // intent sign up
         signUp_btn.setOnClickListener(new View.OnClickListener() {
@@ -185,42 +192,58 @@ public class SignInActivity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-            String Uid = user.getUid();
+            final String Uid = user.getUid();
             String Email = user.getEmail();
             String name = user.getDisplayName();
             String image = user.getPhotoUrl().toString();
-          // add user to firebase database
-          HashMap<String, Object> userdata = new HashMap<>();
-          userdata.put("email", Email);
-          userdata.put("uid", Uid);
-          userdata.put("displayName", name);
-          userdata.put("phone", "");
-          userdata.put("photoUrl", image);
-          HashMap<String, Object> roledata = new HashMap<>();
-          roledata.put("admin", false);
-          roledata.put("member", true);
-          mDatabase = FirebaseDatabase.getInstance().getReference();
-          mDatabase.child("users").child(Uid).setValue(userdata).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-              Log.d("data users", e.getLocalizedMessage());
-            }
-          });
-          mDatabase.child("users").child(Uid).child("role").setValue(roledata).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-              Log.d("data role", e.getLocalizedMessage());
-            }
-          });
+            // add user to firebase database
+            HashMap<String, Object> userdata = new HashMap<>();
+            userdata.put("email", Email);
+            userdata.put("uid", Uid);
+            userdata.put("displayName", name);
+            userdata.put("phone", "");
+            userdata.put("photoUrl", image);
+            HashMap<String, Object> roledata = new HashMap<>();
+            roledata.put("admin", false);
+            roledata.put("member", true);
+            mDatabase = FirebaseDatabase.getInstance().getReference();
+            mDatabase.child("users").child(Uid).setValue(userdata).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d("data users", e.getLocalizedMessage());
+                }
+            });
+            mDatabase.child("users").child(Uid).child("role").setValue(roledata).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d("data role", e.getLocalizedMessage());
+                }
+            });
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference();
+            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        User userdata = dataSnapshot.child("users").child(Uid).getValue(User.class);
+                        Prevalent.currentOnLineUsers = userdata;
+                        Role roleUser = dataSnapshot.child("users").child(Uid).child("role").getValue(Role.class);
+                        Prevalent.roleUser = roleUser;
+                    }
+                }
 
-          // intent to home activity
-          mAuth.getCurrentUser().reload();
-          Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
-          startActivity(intent);
-          finish();
-        }
-        else {
-          Toast.makeText(this, "Login Error", Toast.LENGTH_SHORT).show();
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+            // intent to home activity
+            mAuth.getCurrentUser().reload();
+            Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            Toast.makeText(this, "User is not logged in", Toast.LENGTH_SHORT).show();
         }
     }
 //    private void firebaseAuthWithGoogle(String idToken) {

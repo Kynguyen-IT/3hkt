@@ -35,22 +35,22 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class UserInformationActivity extends AppCompatActivity {
     private FontAwesome close_user_information, change_avatar;
     private CircleImageView avatar_user;
-    private TextView nameTV, emailTV, phoneTV,addressTV;
+    private TextView nameTV, emailTV, phoneTV, addressTV;
     private Button updateBtn;
     private String checker;
     private Uri photoUrl;
     private StorageReference storageProfilePrictureRef;
     private StorageTask uploadTask;
-    private String myUrl= "";
+    private String myUrl = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_information);
-      mapping();
+        mapping();
 
         storageProfilePrictureRef = FirebaseStorage.getInstance().getReference().child("Profile pictures");
-      // set User ui
+        // set User ui
         setUserUi();
 
         // back intent account fragment
@@ -70,96 +70,93 @@ public class UserInformationActivity extends AppCompatActivity {
             }
         });
 
-      avatar_user.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-          checker = "clicked";
-          CropImage.activity(photoUrl)
-              .setAspectRatio(1,1)
-              .start(UserInformationActivity.this);
-        }
-      });
-
-
-      change_avatar.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-          uploadImage();
-        }
-      });
-    }
-
-  private void uploadImage() {
-     final ProgressDialog progressDialog = new ProgressDialog(this);
-     progressDialog.setTitle("Update Profile");
-     progressDialog.setMessage("Please wait, while we are updating your account information");
-     progressDialog.setCanceledOnTouchOutside(false);
-     progressDialog.show();
-    if (photoUrl != null){
-      final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-      final String Uid = user.getUid();
-      final StorageReference fileRef = storageProfilePrictureRef.child(Uid + "jpg");
-      uploadTask = fileRef.putFile(photoUrl);
-
-      uploadTask.continueWithTask(new Continuation() {
-        @Override
-        public Object then(@NonNull Task task) throws Exception {
-          if (!task.isSuccessful()){
-            throw task.getException();
-          }
-          return fileRef.getDownloadUrl();
-          }
-          }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+        avatar_user.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onComplete(@NonNull Task<Uri> task) {
-                if (task.isSuccessful()){
-                  Uri downloadUrl = task.getResult();
-                  myUrl = downloadUrl.toString();
-                  progressDialog.dismiss();
-                  DatabaseReference user = FirebaseDatabase.getInstance().getReference().child("users").child(Uid);
-                  user.child("photoUrl").setValue(myUrl);
-
-                  Toast.makeText(UserInformationActivity.this, "Profile info update successfully", Toast.LENGTH_SHORT).show();
-                  FirebaseAuth.getInstance().getCurrentUser().reload();
-                  finish();
-                }else {
-                  Toast.makeText(UserInformationActivity.this, "Profile info update error", Toast.LENGTH_SHORT).show();
-                  progressDialog.dismiss();
-                }
+            public void onClick(View v) {
+                checker = "clicked";
+                CropImage.activity(photoUrl)
+                        .setAspectRatio(1, 1)
+                        .start(UserInformationActivity.this);
             }
-      });
+        });
 
-    }else {
-      Toast.makeText(this, "image is not selected", Toast.LENGTH_SHORT).show();
+
+        change_avatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadImage();
+            }
+        });
     }
-  }
 
+    private void uploadImage() {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Update Profile");
+        progressDialog.setMessage("Please wait, while we are updating your account information");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
+        if (photoUrl != null) {
+            final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            final String Uid = user.getUid();
+            final StorageReference fileRef = storageProfilePrictureRef.child(Uid + "jpg");
+            uploadTask = fileRef.putFile(photoUrl);
 
-  @Override
-  protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-    if (requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE  &&  resultCode==RESULT_OK  &&  data!=null)
-    {
-      CropImage.ActivityResult result = CropImage.getActivityResult(data);
-      photoUrl = result.getUri();
-      avatar_user.setImageURI(photoUrl);
+            uploadTask.continueWithTask(new Continuation() {
+                @Override
+                public Object then(@NonNull Task task) throws Exception {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
+                    }
+                    return fileRef.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()) {
+                        Uri downloadUrl = task.getResult();
+                        myUrl = downloadUrl.toString();
+                        progressDialog.dismiss();
+                        DatabaseReference user = FirebaseDatabase.getInstance().getReference().child("users").child(Uid);
+                        user.child("photoUrl").setValue(myUrl);
+
+                        Toast.makeText(UserInformationActivity.this, "Profile info update successfully", Toast.LENGTH_SHORT).show();
+                        FirebaseAuth.getInstance().getCurrentUser().reload();
+                        finish();
+                    } else {
+                        Toast.makeText(UserInformationActivity.this, "Profile info update error", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+                    }
+                }
+            });
+
+        } else {
+            Toast.makeText(this, "image is not selected", Toast.LENGTH_SHORT).show();
+        }
     }
-    else
-    {
-      Toast.makeText(this, "Error, Try Again.", Toast.LENGTH_SHORT).show();
 
-      startActivity(new Intent(UserInformationActivity.this, UserInformationActivity.class));
-      finish();
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            photoUrl = result.getUri();
+            avatar_user.setImageURI(photoUrl);
+        } else {
+            Toast.makeText(this, "Error, Try Again.", Toast.LENGTH_SHORT).show();
+
+            startActivity(new Intent(UserInformationActivity.this, UserInformationActivity.class));
+            finish();
+        }
     }
-  }
 
     private void setUserUi() {
-      FirebaseAuth.getInstance().getCurrentUser().reload();
-      Picasso.get().load(Prevalent.currentOnLineUsers.getPhotoUrl()).placeholder(R.drawable.profile).into(avatar_user);
-      nameTV.setText(Prevalent.currentOnLineUsers.getDisplayName());
-      emailTV.setText(Prevalent.currentOnLineUsers.getEmail());
-      phoneTV.setText(Prevalent.currentOnLineUsers.getPhone());
-      addressTV.setText(Prevalent.currentOnLineUsers.getAddress());
+//        FirebaseAuth.getInstance().getCurrentUser().reload();
+        Picasso.get().load(Prevalent.currentOnLineUsers.getPhotoUrl()).placeholder(R.drawable.profile).into(avatar_user);
+        nameTV.setText(Prevalent.currentOnLineUsers.getDisplayName());
+        emailTV.setText(Prevalent.currentOnLineUsers.getEmail());
+        phoneTV.setText(Prevalent.currentOnLineUsers.getPhone());
+        addressTV.setText(Prevalent.currentOnLineUsers.getAddress());
     }
 
     private void mapping() {
