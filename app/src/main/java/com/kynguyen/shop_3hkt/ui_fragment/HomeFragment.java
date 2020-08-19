@@ -189,6 +189,7 @@ public class HomeFragment extends Fragment {
                         Intent intent =new Intent(viewHome.getContext(), MenuActivity.class);
                         intent.putExtra("idCate", model.id);
                         intent.putExtra("nameCate", model.name);
+                        intent.putExtra("addressUser", addressUser);
                         startActivity(intent);
                     }
                 });

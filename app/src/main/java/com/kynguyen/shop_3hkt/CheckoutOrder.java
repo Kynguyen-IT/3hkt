@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,8 +45,6 @@ public class CheckoutOrder extends AppCompatActivity {
   private DatabaseReference refOrder, refCart ,ref;
   private Button orderBtn, continueShoppingBtn;
   private Dialog dialog;
-  ArrayList<Cart> carts;
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -72,8 +72,6 @@ public class CheckoutOrder extends AppCompatActivity {
       @Override
       public void onClick(View v) {
         getInformationAndDataOrder();
-        carts.clear();
-//        ref.removeValue();
         showDiaLogOrder();
       }
     });
@@ -81,39 +79,45 @@ public class CheckoutOrder extends AppCompatActivity {
 
   private void getInformationAndDataOrder() {
     final String idOrder = refOrder.child("Orders").push().getKey();
-    carts = new ArrayList<Cart>();
     ref.addValueEventListener(new ValueEventListener() {
       @Override
       public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        final ArrayList<Cart> carts = new ArrayList<Cart>();
         for (DataSnapshot areaSnapshot: dataSnapshot.getChildren()) {
           String id = areaSnapshot.getKey();
           Cart cart = dataSnapshot.child(id).getValue(Cart.class);
           carts.add( new Cart(cart.getPid(),cart.getName(),cart.getPrice(),cart.getQuantity(),cart.getDiscount(),cart.getCateId(),cart.getAddress(),cart.getImage()));
         }
+
+
+        HashMap<String,Object> data = new HashMap<>();
+        data.put("orderId", idOrder);
+        data.put("name", Prevalent.currentOnLineUsers.getDisplayName());
+        data.put("phone",Prevalent.currentOnLineUsers.getPhone());
+        data.put("image",Prevalent.currentOnLineUsers.getPhotoUrl());
+        data.put("status", "pending");
+        data.put("dateTime",time +" "+ date);
+        data.put("address",addressUser);
+        data.put("quantity", item);
+        data.put("total",total);
+        data.put("userId", Prevalent.currentOnLineUsers.getUid());
+
+        refOrder.child("Orders").child(idOrder).updateChildren(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+          @Override
+          public void onComplete(@NonNull Task<Void> task) {
+            if (task.isSuccessful()){
+              refOrder.child("Orders").child(idOrder)
+                  .child("Products").setValue(carts);
+            }
+          }
+        });
       }
 
       @Override
       public void onCancelled(@NonNull DatabaseError databaseError) {
       }
     });
-
-    refOrder.child("Orders").child(idOrder)
-        .child("Products").setValue(carts);
-
-    HashMap<String,Object> data = new HashMap<>();
-    data.put("orderId", idOrder);
-    data.put("name", Prevalent.currentOnLineUsers.getDisplayName());
-    data.put("phone",Prevalent.currentOnLineUsers.getPhone());
-    data.put("image",Prevalent.currentOnLineUsers.getPhotoUrl());
-    data.put("status", "pending");
-    data.put("dateTime",time +" "+ date);
-    data.put("address",addressUser);
-    data.put("quantity", item);
-    data.put("total",total);
-    data.put("userId", Prevalent.currentOnLineUsers.getUid());
-
-    refOrder.child("Orders").child(idOrder).setValue(data);
-
+    ref.removeValue();
   }
 
   private void showDiaLogOrder() {

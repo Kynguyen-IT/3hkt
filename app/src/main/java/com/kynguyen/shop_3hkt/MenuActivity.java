@@ -30,7 +30,7 @@ public class MenuActivity extends AppCompatActivity {
   private TextView title;
   private RecyclerView recyclerView;
   private RecyclerView.LayoutManager layoutManager;
-  private String idcate, nameCate;
+  private String idcate, nameCate, addressUser;
   private DatabaseReference refProduct, refSave;
   private boolean status;
   private ProgressBar progressBar;
@@ -42,6 +42,7 @@ public class MenuActivity extends AppCompatActivity {
     nameCate = getIntent().getStringExtra("nameCate");
     mapping();
     title.setText("Menu "+ nameCate);
+    addressUser = getIntent().getStringExtra("addressUser");
   }
 
   @Override
@@ -100,6 +101,7 @@ public class MenuActivity extends AppCompatActivity {
                   public void onClick(View v) {
                     Intent intent = new Intent(MenuActivity.this, Profile_product.class);
                     intent.putExtra("pid", model.pid);
+                    intent.putExtra("addressUser", addressUser);
                     startActivity(intent);
                   }
                 });
@@ -123,11 +125,11 @@ public class MenuActivity extends AppCompatActivity {
   private void mapping() {
     recyclerView= findViewById(R.id.menu_list);
     recyclerView.setHasFixedSize(true);
-    close = findViewById(R.id.close_menu);
-    title = findViewById(R.id.title_menu);
     layoutManager = new LinearLayoutManager(this);
     recyclerView.setLayoutManager(layoutManager);
     progressBar = findViewById(R.id.loading_menu_product);
+    close = findViewById(R.id.close_menu);
+    title = findViewById(R.id.title_menu);
   }
 
 }
