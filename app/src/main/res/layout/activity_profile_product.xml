@@ -350,6 +350,37 @@
                     </RelativeLayout>
                 </RelativeLayout>
             </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/menu_container_main_product_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/item_container_main_product_profile"
+                >
+
+                <TextView
+                    android:id="@+id/menu_title_container_main_product_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Product"
+                    android:layout_marginBottom="3dp"
+                    android:textColor="#000"
+                    android:textSize="18dp"
+                    android:gravity="center"
+                    ></TextView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/menu_list_profile_product"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_below="@+id/heard_menu"
+                    >
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </RelativeLayout>
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 

@@ -42,7 +42,7 @@ import java.util.HashMap;
 public class Profile_product extends AppCompatActivity {
   private Toolbar toolbar;
   private ImageView imageProduct, itemImagesProduct, save;
-  private TextView nameProduct, addressProduct, dateProduct, priceProduct, descriptionProduct, quantity, itemNameProduct, itemPriceProduct, clearAll, badge, quantityCartFooter, quantityCartFooterDialog, badgeDiaLog;
+  private TextView nameProduct, addressProduct, dateProduct, priceProduct, descriptionProduct, quantity, itemNameProduct, itemPriceProduct, clearAll, badge, quantityCartFooter, quantityCartFooterDialog, badgeDiaLog, titleMenu;
   private FontAwesome close;
   private Button CheckOut , CheckOutDialog;
   private String productId = "";
@@ -54,8 +54,8 @@ public class Profile_product extends AppCompatActivity {
   private RelativeLayout footerCart, footerCartDialog;
   private int i = 0, resultQuantity = 0, getSumQuantity = 0, getTotalPrice, getQuantityCartDialog = 0;
   private Dialog dialog;
-  private RecyclerView recyclerViewCartDialog;
-  private RecyclerView.LayoutManager layoutManagerCartDialog;
+  private RecyclerView recyclerViewCartDialog ,recyclerView;
+  private RecyclerView.LayoutManager layoutManagerCartDialog, layoutManager;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -458,6 +458,7 @@ public class Profile_product extends AppCompatActivity {
     priceProduct = findViewById(R.id.price_product_profile);
     descriptionProduct = findViewById(R.id.description_product_profile);
     imageProduct = findViewById(R.id.image_product_profile);
+    titleMenu = findViewById(R.id.menu_title_container_main_product_profile);
     // item product
     itemImagesProduct = findViewById(R.id.image_product_item_container_main_product_profile);
     itemNameProduct = findViewById(R.id.name_item_container_main_product_profile);
@@ -476,5 +477,11 @@ public class Profile_product extends AppCompatActivity {
     dialog.setContentView(R.layout.dialog_cart);
     quantityCartFooterDialog = dialog.findViewById(R.id.quantity_cart_dialog_cart_product_profile);
     badgeDiaLog = dialog.findViewById(R.id.badge_dialog);
+    // recyclerView
+    recyclerView= findViewById(R.id.menu_list_profile_product);
+    recyclerView.setHasFixedSize(true);
+
+    layoutManager = new LinearLayoutManager(this);
+    recyclerView.setLayoutManager(layoutManager);
   }
 }
