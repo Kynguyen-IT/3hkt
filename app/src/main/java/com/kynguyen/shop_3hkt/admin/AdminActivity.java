@@ -28,6 +28,7 @@ public class AdminActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(AdminActivity.this, HomeActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

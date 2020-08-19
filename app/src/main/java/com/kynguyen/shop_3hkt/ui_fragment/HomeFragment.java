@@ -37,6 +37,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.kynguyen.shop_3hkt.MenuActivity;
 import com.kynguyen.shop_3hkt.Model.Categories;
 import com.kynguyen.shop_3hkt.Model.Products;
 import com.kynguyen.shop_3hkt.Prevalent.Constants;
@@ -178,9 +179,19 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull ShowCateViewHolder holder, int position, @NonNull Categories model) {
+            protected void onBindViewHolder(@NonNull ShowCateViewHolder holder, int position, @NonNull final Categories model) {
                 holder.textView.setText(model.getName());
                 Picasso.get().load(model.getImage()).fit().into(holder.imageView);
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent =new Intent(viewHome.getContext(), MenuActivity.class);
+                        intent.putExtra("idCate", model.id);
+                        intent.putExtra("nameCate", model.name);
+                        startActivity(intent);
+                    }
+                });
             }
         };
         recyclerViewCate.setAdapter(adapterCate);

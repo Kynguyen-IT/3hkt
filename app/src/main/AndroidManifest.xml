@@ -19,6 +19,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity android:name=".admin.Products.UpdateProductActivity"></activity>
+        <activity android:name=".MenuActivity"></activity>
         <activity android:name=".SearchActivity" />
         <activity android:name=".admin.Orders.AdminOrderActivity" />
         <activity android:name=".CheckoutOrder" />
