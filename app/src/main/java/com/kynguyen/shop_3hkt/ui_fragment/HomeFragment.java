@@ -119,11 +119,11 @@ public class HomeFragment extends Fragment {
         locationRequest.setFastestInterval(3000);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
-        LocationServices.getFusedLocationProviderClient(this.getActivity()).requestLocationUpdates(locationRequest, new LocationCallback() {
+        LocationServices.getFusedLocationProviderClient(viewHome.getContext()).requestLocationUpdates(locationRequest, new LocationCallback() {
             @Override
             public void onLocationResult(LocationResult locationResult) {
                 super.onLocationResult(locationResult);
-                LocationServices.getFusedLocationProviderClient(getContext()).removeLocationUpdates(this);
+                LocationServices.getFusedLocationProviderClient(viewHome.getContext()).removeLocationUpdates(this);
                 if (locationResult != null && locationResult.getLocations().size() > 0) {
                     int latestLocationIndex = locationResult.getLocations().size() - 1;
                     latitude = locationResult.getLocations().get(latestLocationIndex).getLatitude();
