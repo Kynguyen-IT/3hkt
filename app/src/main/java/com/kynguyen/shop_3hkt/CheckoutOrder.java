@@ -103,14 +103,15 @@ public class CheckoutOrder extends AppCompatActivity {
                 data.put("address", addressUser);
                 data.put("quantity", item);
                 data.put("total", total);
-                data.put("userId", Prevalent.currentOnLineUsers.getUid());
+                data.put("order", "pending_" + Prevalent.currentOnLineUsers.getUid());
 
-                refOrder.child("Orders").child(idOrder).setValue(data).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        refOrder.child("Orders").child(idOrder).child("products").setValue(cartMap);
-                    }
-                });
+                refOrder.child("Orders").child(idOrder).setValue(data)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                refOrder.child("Orders").child(idOrder).child("products").setValue(cartMap);
+                            }
+                        });
             }
 
             @Override
@@ -133,22 +134,30 @@ public class CheckoutOrder extends AppCompatActivity {
         statusOrder = dialog.findViewById(R.id.status_order);
         continueShoppingBtn = dialog.findViewById(R.id.continue_shopping);
 
-        FirebaseDatabase.getInstance().getReference().child("Orders").child(orderId).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Orders order = dataSnapshot.getValue(Orders.class);
-                UserOrderTV.setText("Your order id is " + order.getOrderId());
-                statusOrder.setText("Order Status:" + order.getStatus());
-            }
+        if (Prevalent.currentOnLineUsers != null) {
+//            FirebaseDatabase.getInstance().getReference().child("Orders")
+//                    .child(Prevalent.currentOnLineUsers.getUid())
+//                    .child(orderId)
+//                    .addValueEventListener(new ValueEventListener() {
+            FirebaseDatabase.getInstance().getReference().child("Orders")
+                    .child(orderId)
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            Orders order = dataSnapshot.getValue(Orders.class);
+                            UserOrderTV.setText("Your order id is " + order.getOrderId());
+                            statusOrder.setText("Order Status:" + order.getStatus());
+                        }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                        }
+                    });
+        }
 
 //        UserOrderTV.setText("Your order id is " + Prevalent.currentOnLineUsers.uid);
-//        statusOrder.setText("Order Status:" + "Pending");
+////        statusOrder.setText("Order Status:" + "Pending");
 
         continueShoppingBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,111 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp"
-    >
+    android:padding="5dp">
 
     <RelativeLayout
+        android:id="@+id/header-order-admin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:background="@color/white"
-        >
+        android:padding="5dp">
+
         <ImageView
             android:id="@+id/image_user_order"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginRight="10dp"
             android:layout_centerVertical="true"
-            ></ImageView>
+            android:layout_marginRight="10dp"></ImageView>
 
         <RelativeLayout
             android:id="@+id/content_user_order"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/image_user_order"
             android:layout_centerVertical="true"
-            >
+            android:layout_toRightOf="@+id/image_user_order">
 
             <TextView
                 android:id="@+id/name_user_order"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="name"
-                android:textSize="16dp"
                 android:textColor="#000"
-                ></TextView>
+                android:textSize="16dp"></TextView>
 
             <TextView
                 android:id="@+id/phone_Order"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/name_user_order"
-                android:textSize="16dp"
                 android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/name_user_order"
                 android:text="phone"
                 android:textColor="#000"
-                ></TextView>
+                android:textSize="16dp"></TextView>
 
             <TextView
                 android:id="@+id/address_user_order"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/name_user_order"
-                android:text="address"
                 android:layout_marginTop="5dp"
-                android:textSize="12dp"
                 android:maxLines="1"
-                ></TextView>
+                android:text="address"
+                android:textSize="12dp"></TextView>
 
             <TextView
                 android:id="@+id/date_time_user_order"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/address_user_order"
-                android:text="address"
                 android:layout_marginTop="5dp"
-                android:textSize="12dp"
                 android:maxLines="1"
-                ></TextView>
+                android:text="address"
+                android:textSize="12dp"></TextView>
 
             <TextView
                 android:id="@+id/item_user_order"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/date_time_user_order"
-                android:text="address"
                 android:layout_marginTop="5dp"
-                android:textSize="12dp"
                 android:maxLines="1"
-                ></TextView>
+                android:text="address"
+                android:textSize="12dp"></TextView>
 
             <TextView
                 android:id="@+id/total_user_order"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/item_user_order"
                 android:layout_below="@+id/date_time_user_order"
-                android:text="address"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
-                android:textSize="12dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/item_user_order"
                 android:maxLines="1"
-                ></TextView>
+                android:text="address"
+                android:textSize="12dp"></TextView>
 
             <TextView
                 android:id="@+id/status_user_order"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/item_user_order"
-                android:text="address"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="5dp"
-                android:textSize="12dp"
                 android:maxLines="1"
+                android:text="address"
                 android:textColor="#000"
-                ></TextView>
+                android:textSize="12dp"></TextView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/status_user_order"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/admin_order_ship"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_ship"
+                    android:text="Ship"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorText" />
+
+                <Button
+                    android:id="@+id/admin_order_finish"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_finish"
+                    android:text="Finish"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorText" />
+            </LinearLayout>
         </RelativeLayout>
+
+
     </RelativeLayout>
+
 
 </RelativeLayout>
