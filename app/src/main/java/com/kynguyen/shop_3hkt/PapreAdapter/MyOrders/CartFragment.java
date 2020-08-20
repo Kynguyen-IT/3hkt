@@ -27,8 +27,8 @@ import io.paperdb.Paper;
 
 public class CartFragment extends Fragment {
   private View cartView;
-  private RecyclerView recyclerViewListCart;
   private RelativeLayout cart_show_no_Order;
+  private RecyclerView recyclerViewListCart;
   private RecyclerView.LayoutManager layoutManagerListCart;
   private DatabaseReference refCart;
   @Override
