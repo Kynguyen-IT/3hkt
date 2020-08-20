@@ -26,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.kynguyen.shop_3hkt.Model.Cart;
+import com.kynguyen.shop_3hkt.Model.Orders;
 import com.kynguyen.shop_3hkt.Prevalent.Prevalent;
 import com.kynguyen.shop_3hkt.ViewHolder.ShowProductOrderViewHolder;
 import com.squareup.picasso.Picasso;
@@ -71,13 +72,13 @@ public class CheckoutOrder extends AppCompatActivity {
         orderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getInformationAndDataOrder();
-                showDiaLogOrder();
+                String order = getInformationAndDataOrder();
+                showDiaLogOrder(order);
             }
         });
     }
 
-    private void getInformationAndDataOrder() {
+    private String getInformationAndDataOrder() {
         final String idOrder = refOrder.child("Orders").push().getKey();
         final ArrayList<Cart> carts = new ArrayList<Cart>();
         ref.addValueEventListener(new ValueEventListener() {
@@ -91,14 +92,6 @@ public class CheckoutOrder extends AppCompatActivity {
                             .child("products").push().getKey();
                     cartMap.put(key, cart);
                 }
-//                for (DataSnapshot areaSnapshot : dataSnapshot.getChildren()) {
-//                    String id = areaSnapshot.getKey();
-//                    Cart cart = dataSnapshot.child(id).getValue(Cart.class);
-////                    carts.add(new Cart(cart.getPid(), cart.getName(), cart.getPrice(), cart.getQuantity(), cart.getDiscount(), cart.getCateId(), cart.getAddress(), cart.getImage()));
-//                    carts.add(cart);
-//                }
-//                refOrder.child("Orders").child(idOrder)
-//                        .child("Products").push().setValue(carts);
 
                 HashMap<String, Object> data = new HashMap<>();
                 data.put("orderId", idOrder);
@@ -126,9 +119,10 @@ public class CheckoutOrder extends AppCompatActivity {
         });
 //        refOrder.child("Cart List").child("User")
 //                .child(Prevalent.currentOnLineUsers.getUid()).removeValue();
+        return idOrder;
     }
 
-    private void showDiaLogOrder() {
+    private void showDiaLogOrder(String orderId) {
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         Window window = dialog.getWindow();
         window.getAttributes().windowAnimations = R.style.DialogAnimation;
@@ -139,8 +133,22 @@ public class CheckoutOrder extends AppCompatActivity {
         statusOrder = dialog.findViewById(R.id.status_order);
         continueShoppingBtn = dialog.findViewById(R.id.continue_shopping);
 
-        UserOrderTV.setText("Your order id is " + Prevalent.currentOnLineUsers.uid);
-        statusOrder.setText("Order Status:" + "Pending");
+        FirebaseDatabase.getInstance().getReference().child("Orders").child(orderId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Orders order = dataSnapshot.getValue(Orders.class);
+                UserOrderTV.setText("Your order id is " + order.getOrderId());
+                statusOrder.setText("Order Status:" + order.getStatus());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+//        UserOrderTV.setText("Your order id is " + Prevalent.currentOnLineUsers.uid);
+//        statusOrder.setText("Order Status:" + "Pending");
 
         continueShoppingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
