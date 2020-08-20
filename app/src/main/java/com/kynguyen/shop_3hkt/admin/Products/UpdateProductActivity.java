@@ -1,6 +1,8 @@
 package com.kynguyen.shop_3hkt.admin.Products;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -53,7 +55,7 @@ import static java.lang.String.valueOf;
 public class UpdateProductActivity extends AppCompatActivity {
     private String pid;
     private EditText nameET, descriptionET, priceET, addressET;
-    private Button updateProduct;
+    private Button updateProduct, deleteProduct;
     private TextView updateImage;
     private CircleImageView imageProduct;
     private String downloadImagesURL, lat, lng;
@@ -63,6 +65,7 @@ public class UpdateProductActivity extends AppCompatActivity {
     private StorageReference productImageRef;
     private SharedPreferences sharedPreferences;
     private String getIdCate;
+    AlertDialog diaBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +101,13 @@ public class UpdateProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 CropImage.activity(ImagesUri).start(UpdateProductActivity.this);
+            }
+        });
+        diaBox = AskOption();
+        deleteProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                diaBox.show();
             }
         });
     }
@@ -283,8 +293,40 @@ public class UpdateProductActivity extends AppCompatActivity {
 
             }
         });
+    }
+    private void delete() {
+        ref.child("products").child(pid).removeValue();
+        Intent intent = new Intent(UpdateProductActivity.this, AdminProductsActivity.class);
+        startActivity(intent);
+        finish();
+        Toast.makeText(this, "Product " + pid + " has been deleted!", Toast.LENGTH_LONG).show();
+    }
 
+    private AlertDialog AskOption()
+    {
+        AlertDialog myQuittingDialogBox = new AlertDialog.Builder(this)
+                // set message, title, and icon
+                .setTitle("Delete")
+                .setMessage("Do you want to Delete")
+                .setIcon(R.drawable.delete)
 
+                .setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        delete();
+                        dialog.dismiss();
+                    }
+
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+
+        return myQuittingDialogBox;
     }
 
     private void mapping() {
@@ -303,6 +345,7 @@ public class UpdateProductActivity extends AppCompatActivity {
         imageProduct = findViewById(R.id.image_product_update);
         addressET = findViewById(R.id.address_product_update);
         spinner_items = findViewById(R.id.dynamic_spinner_update);
+        deleteProduct = findViewById(R.id.delete_product);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
     }
