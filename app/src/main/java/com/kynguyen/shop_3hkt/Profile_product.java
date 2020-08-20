@@ -317,24 +317,22 @@ public class Profile_product extends AppCompatActivity {
         .child("Products").addValueEventListener(new ValueEventListener() {
       @Override
       public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-        int q  = 0;
-        int p = 0;
-        int getPriceCart = 0;
-        for (DataSnapshot reslutCart : dataSnapshot.getChildren()) {
-          String KeyProductCartId = reslutCart.getKey();
-          Cart cart = dataSnapshot.child(KeyProductCartId).getValue(Cart.class);
+        int total = 0;
+        int totalQuantity = 0;
+        for (DataSnapshot resultCart : dataSnapshot.getChildren()) {
+          Cart cart = resultCart.getValue(Cart.class);
           int quantityCart = cart.getQuantity();
           int priceCart = Integer.parseInt(cart.getPrice());
-          q += quantityCart;
-          getPriceCart += priceCart;
-          p = q * getPriceCart;
 
-          badge.setText(String.valueOf(q));
-          quantityCartFooter.setText(String.valueOf(p+"đ"));
-
-          badgeDiaLog.setText(String.valueOf(q));
-          quantityCartFooterDialog.setText(String.valueOf(p + "đ"));
+          int semiTotal = quantityCart * priceCart;
+          totalQuantity += quantityCart;
+          total += semiTotal;
         }
+        badge.setText(String.valueOf(totalQuantity));
+        quantityCartFooter.setText(String.valueOf(total+"đ"));
+
+        badgeDiaLog.setText(String.valueOf(totalQuantity));
+        quantityCartFooterDialog.setText(String.valueOf(total + "đ"));
       }
 
       @Override
