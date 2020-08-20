@@ -18,8 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -88,7 +86,8 @@ public class CheckoutOrder extends AppCompatActivity {
           Cart cart = dataSnapshot.child(id).getValue(Cart.class);
           carts.add( new Cart(cart.getPid(),cart.getName(),cart.getPrice(),cart.getQuantity(),cart.getDiscount(),cart.getCateId(),cart.getAddress(),cart.getImage()));
         }
-
+        refOrder.child("Orders").child(idOrder)
+            .child("Products").push().setValue(carts);
 
         HashMap<String,Object> data = new HashMap<>();
         data.put("orderId", idOrder);
@@ -102,22 +101,14 @@ public class CheckoutOrder extends AppCompatActivity {
         data.put("total",total);
         data.put("userId", Prevalent.currentOnLineUsers.getUid());
 
-        refOrder.child("Orders").child(idOrder).updateChildren(data).addOnCompleteListener(new OnCompleteListener<Void>() {
-          @Override
-          public void onComplete(@NonNull Task<Void> task) {
-            if (task.isSuccessful()){
-              refOrder.child("Orders").child(idOrder)
-                  .child("Products").setValue(carts);
-            }
-          }
-        });
+        refOrder.child("Orders").child(idOrder).updateChildren(data);
+        ref.removeValue();
       }
 
       @Override
       public void onCancelled(@NonNull DatabaseError databaseError) {
       }
     });
-    ref.removeValue();
   }
 
   private void showDiaLogOrder() {
