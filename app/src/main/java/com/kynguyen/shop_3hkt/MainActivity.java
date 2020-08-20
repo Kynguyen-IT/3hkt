@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     mapping();
 
+    checkUserStatus();
 
     logo.setAnimation(top_anim);
     title_view.setAnimation(bottom_anim);
@@ -63,14 +64,12 @@ public class MainActivity extends AppCompatActivity {
 
   @Override
   protected void onStart() {
-    checkUserStatus();
     super.onStart();
   }
 
 
   private void checkUserStatus() {
     final FirebaseUser userStatus = firebaseAuth.getCurrentUser();
-//    firebaseAuth.addAuthStateListener();
     if (userStatus != null) {
       Uid = userStatus.getUid();
       FirebaseAuth.getInstance().getCurrentUser().reload();
