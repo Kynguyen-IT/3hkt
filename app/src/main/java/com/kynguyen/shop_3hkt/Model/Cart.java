@@ -83,4 +83,9 @@ public class Cart {
   public void setAddress(String address) {
     this.address = address;
   }
+//
+//  public Double getTotalPrice() {
+//    return this.price * this.quantity;
+//  }
+
 }
