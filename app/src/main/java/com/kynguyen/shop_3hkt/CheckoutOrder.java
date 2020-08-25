@@ -32,7 +32,6 @@ import com.kynguyen.shop_3hkt.ViewHolder.ShowProductOrderViewHolder;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
@@ -127,16 +126,11 @@ public class CheckoutOrder extends AppCompatActivity {
         window.getAttributes().windowAnimations = R.style.DialogAnimation;
 
         // mapping dia log
-
         UserOrderTV = dialog.findViewById(R.id.your_order);
         statusOrder = dialog.findViewById(R.id.status_order);
         continueShoppingBtn = dialog.findViewById(R.id.continue_shopping);
 
         if (Prevalent.currentOnLineUsers != null) {
-//            FirebaseDatabase.getInstance().getReference().child("Orders")
-//                    .child(Prevalent.currentOnLineUsers.getUid())
-//                    .child(orderId)
-//                    .addValueEventListener(new ValueEventListener() {
             FirebaseDatabase.getInstance().getReference().child("Orders")
                     .child(orderId)
                     .addValueEventListener(new ValueEventListener() {
@@ -154,8 +148,6 @@ public class CheckoutOrder extends AppCompatActivity {
                     });
         }
 
-//        UserOrderTV.setText("Your order id is " + Prevalent.currentOnLineUsers.uid);
-////        statusOrder.setText("Order Status:" + "Pending");
 
         continueShoppingBtn.setOnClickListener(new View.OnClickListener() {
             @Override

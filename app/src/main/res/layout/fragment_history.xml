@@ -12,7 +12,7 @@
         android:gravity="center">
 
         <ImageView
-            android:id="@+id/logo_history_show_noOrder"
+            android:id="@+id/logo_history_show_no_Order"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_centerHorizontal="true"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:text="No History Orders"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/logo_history_show_noOrder"
+            android:layout_below="@id/logo_history_show_no_Order"
             android:textAlignment="center"
             android:textSize="15dp"
             android:textFontWeight="400"

@@ -6,7 +6,7 @@
     tools:context=".PapreAdapter.MyOrders.ongoingFragment">
 
     <RelativeLayout
-        android:id="@+id/ongoing_show_no_Order"
+        android:id="@+id/ongoing_no_Order"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center">

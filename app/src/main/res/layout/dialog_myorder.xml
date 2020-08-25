@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="120dp"
+    android:background="@drawable/radius_top"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/heard_dialog_myorder"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/border_bottom"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            >
+
+            <com.kynguyen.shop_3hkt.FontAwesome
+                android:id="@+id/close_dialog_myorder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="&#xf00d;"
+                android:textColor="#333"
+                android:textSize="18dp"></com.kynguyen.shop_3hkt.FontAwesome>
+
+            <TextView
+                android:id="@+id/title_dialog_myorder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="Product"
+                android:textColor="#000"
+                android:textSize="18dp"></TextView>
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_product_MyOrder"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/heard_dialog_cart"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            ></androidx.recyclerview.widget.RecyclerView>
+    </RelativeLayout>
+</RelativeLayout>

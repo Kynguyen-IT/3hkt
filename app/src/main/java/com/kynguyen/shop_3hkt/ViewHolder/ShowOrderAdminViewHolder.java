@@ -3,6 +3,7 @@ package com.kynguyen.shop_3hkt.ViewHolder;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ public class ShowOrderAdminViewHolder extends RecyclerView.ViewHolder implements
     public itemClickLitsner listenr;
     public Button admin_order_ship, admin_order_finish;
     public RelativeLayout rootOrder;
+    public LinearLayout box_btn;
 
     public ShowOrderAdminViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -32,6 +34,7 @@ public class ShowOrderAdminViewHolder extends RecyclerView.ViewHolder implements
         admin_order_ship = itemView.findViewById(R.id.admin_order_ship);
         admin_order_finish = itemView.findViewById(R.id.admin_order_finish);
         rootOrder = itemView.findViewById(R.id.rootOrder);
+        box_btn = itemView.findViewById(R.id.box_btn);
     }
 
     @Override
