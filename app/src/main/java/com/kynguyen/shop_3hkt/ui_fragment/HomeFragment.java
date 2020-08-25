@@ -93,6 +93,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(viewHome.getContext(), SearchActivity.class);
+                intent.putExtra("addressUser", addressUser);
                 startActivity(intent);
             }
         });
