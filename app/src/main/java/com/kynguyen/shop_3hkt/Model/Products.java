@@ -5,11 +5,11 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class Products {
   public String address, description, idCategory, image,name, pid,price, lat, lng;
-
+  public int quantity;
   public Products() {
   }
 
-  public Products(String address, String description, String idCategory, String image, String name, String pid, String price) {
+  public Products(String address, String description, String idCategory, String image, String name, String pid, String price, int quantity) {
     this.address = address;
     this.description = description;
     this.idCategory = idCategory;
@@ -19,6 +19,7 @@ public class Products {
     this.price = price;
     this.lat= lat;
     this.lng = lng;
+    this.quantity = quantity;
   }
 
   public String getLat() {
@@ -91,5 +92,13 @@ public class Products {
 
   public void setPrice(String price) {
     this.price = price;
+  }
+
+  public int getQuantity() {
+    return quantity;
+  }
+
+  public void setQuantity(int quantity) {
+    this.quantity = quantity;
   }
 }
