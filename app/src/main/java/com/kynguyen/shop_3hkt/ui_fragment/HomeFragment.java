@@ -90,11 +90,11 @@ public class HomeFragment extends Fragment {
         }
 
         searchBar.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            Intent intent = new Intent(viewHome.getContext(), SearchActivity.class);
-            startActivity(intent);
-          }
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(viewHome.getContext(), SearchActivity.class);
+                startActivity(intent);
+            }
         });
         return viewHome;
     }
@@ -169,11 +169,11 @@ public class HomeFragment extends Fragment {
         FirebaseRecyclerOptions<Categories> optionsCate = new FirebaseRecyclerOptions.Builder<Categories>()
                 .setQuery(refCate, Categories.class).build();
 
-        FirebaseRecyclerAdapter<Categories, ShowCateViewHolder> adapterCate = new FirebaseRecyclerAdapter <Categories, ShowCateViewHolder>(optionsCate){
+        FirebaseRecyclerAdapter<Categories, ShowCateViewHolder> adapterCate = new FirebaseRecyclerAdapter<Categories, ShowCateViewHolder>(optionsCate) {
             @NonNull
             @Override
             public ShowCateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View viewCate = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_cates_home_holder_view,parent,false);
+                View viewCate = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_cates_home_holder_view, parent, false);
                 ShowCateViewHolder holder = new ShowCateViewHolder(viewCate);
                 return holder;
             }
@@ -186,7 +186,7 @@ public class HomeFragment extends Fragment {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent =new Intent(viewHome.getContext(), MenuActivity.class);
+                        Intent intent = new Intent(viewHome.getContext(), MenuActivity.class);
                         intent.putExtra("idCate", model.id);
                         intent.putExtra("nameCate", model.name);
                         intent.putExtra("addressUser", addressUser);
@@ -224,12 +224,14 @@ public class HomeFragment extends Fragment {
                     refSave.child("saves").child(model.pid).child(Prevalent.currentOnLineUsers.getUid()).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.getValue() == null) {
-                                status = false;
-                                holder.heart_product.setImageResource(R.drawable.ic_save);
-                            } else {
-                                status = true;
-                                holder.heart_product.setImageResource(R.drawable.ic_saved);
+                            if (dataSnapshot.exists()) {
+                                if (dataSnapshot.getValue().equals(true)) {
+                                    status = true;
+                                    holder.heart_product.setImageResource(R.drawable.ic_saved);
+                                } else {
+                                    status = false;
+                                    holder.heart_product.setImageResource(R.drawable.ic_save);
+                                }
                             }
                         }
 

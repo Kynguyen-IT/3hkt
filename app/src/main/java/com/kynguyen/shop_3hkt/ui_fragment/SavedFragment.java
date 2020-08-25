@@ -52,7 +52,6 @@ public class SavedFragment extends Fragment {
             FirebaseRecyclerAdapter<Saves, ShowSaveViewHolder> adapter = new FirebaseRecyclerAdapter<Saves, ShowSaveViewHolder>(options) {
                 @Override
                 protected void onBindViewHolder(@NonNull final ShowSaveViewHolder holder, int position, @NonNull final Saves model) {
-
                     holder.name.setText(model.getName());
                     holder.address.setText(model.getAddress());
                     Picasso.get().load(model.getImage()).fit().into(holder.image);
