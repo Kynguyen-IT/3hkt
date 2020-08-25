@@ -3,6 +3,7 @@ package com.kynguyen.shop_3hkt.ViewHolder;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ public class ShowOrderAdminViewHolder extends RecyclerView.ViewHolder implements
     public TextView nameTV, phoneTV, statusTV, addressTV, date_timeTV, itemProductTV, totalTV;
     public itemClickLitsner listenr;
     public Button admin_order_ship, admin_order_finish;
+    public RelativeLayout rootOrder;
 
     public ShowOrderAdminViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -29,6 +31,7 @@ public class ShowOrderAdminViewHolder extends RecyclerView.ViewHolder implements
         image = itemView.findViewById(R.id.image_user_order);
         admin_order_ship = itemView.findViewById(R.id.admin_order_ship);
         admin_order_finish = itemView.findViewById(R.id.admin_order_finish);
+        rootOrder = itemView.findViewById(R.id.rootOrder);
     }
 
     @Override

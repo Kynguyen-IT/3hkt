@@ -73,7 +73,6 @@ public class AdminOrderActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         refOrder.child(model.getOrderId()).child("status").setValue("shipping");
-                        refOrder.child(model.getOrderId()).child("order").setValue("shipping_" + Prevalent.currentOnLineUsers.getUid());
                         Toast.makeText(AdminOrderActivity.this, "Order with id: " + model.getOrderId() + " status change to Shipping", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -81,7 +80,6 @@ public class AdminOrderActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         refOrder.child(model.getOrderId()).child("status").setValue("finish");
-                        refOrder.child(model.getOrderId()).child("order").setValue("finish_" + Prevalent.currentOnLineUsers.getUid());
                       Toast.makeText(AdminOrderActivity.this, "Order with id: " + model.getOrderId() + " status change to Finish", Toast.LENGTH_SHORT).show();
                     }
                 });

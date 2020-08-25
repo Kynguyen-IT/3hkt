@@ -156,7 +156,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void fetchAddressFromLatLong(Location location) {
-        Intent intent = new Intent(getActivity(), FetchAddressIntentService.class);
+        Intent intent = new Intent(viewHome.getContext(), FetchAddressIntentService.class);
         intent.putExtra(Constants.RECEIVER, resultReceiver);
         intent.putExtra(Constants.LOCATION_DATA_EXTRA, location);
         getActivity().startService(intent);

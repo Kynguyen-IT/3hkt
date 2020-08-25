@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,9 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.kynguyen.shop_3hkt.Model.Orders;
 import com.kynguyen.shop_3hkt.Prevalent.Prevalent;
 import com.kynguyen.shop_3hkt.R;
@@ -46,7 +50,30 @@ public class ongoingFragment extends Fragment {
 //    String key = FirebaseDatabase.getInstance().getReference().child("Orders").child("Products").push().getKey();
         if (Prevalent.currentOnLineUsers != null) {
             refOrder = FirebaseDatabase.getInstance().getReference().child("Orders");
-            Query query = refOrder.orderByChild("order").equalTo("shipping_" + Prevalent.currentOnLineUsers.getUid());
+
+//            Query query2 = refOrder.orderByChild("uid").equalTo(Prevalent.currentOnLineUsers.getUid());
+//
+//            ValueEventListener valueEventListener = new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    for(DataSnapshot ds : dataSnapshot.getChildren()) {
+////                        if(ds.getValue(Orders.class)) {
+////                            //Do what you need to do
+////                        }
+//                        Orders order = ds.getValue(Orders.class);
+//                        if (order.getStatus().equals("shipping")) {
+//                            Toast.makeText(getContext(), "SHIPPING " + order.getOrderId(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//                }
+//            };
+//            query2.addListenerForSingleValueEvent(valueEventListener);
+
+            Query query = refOrder.orderByChild("uid").equalTo(Prevalent.currentOnLineUsers.getUid());
 
             FirebaseRecyclerOptions<Orders> options = new FirebaseRecyclerOptions.Builder<Orders>()
                     .setQuery(query, Orders.class).build();
@@ -54,14 +81,19 @@ public class ongoingFragment extends Fragment {
             FirebaseRecyclerAdapter<Orders, ShowOrderAdminViewHolder> adapter = new FirebaseRecyclerAdapter<Orders, ShowOrderAdminViewHolder>(options) {
                 @Override
                 protected void onBindViewHolder(@NonNull final ShowOrderAdminViewHolder holder, int position, @NonNull final Orders model) {
-                    holder.nameTV.setText(model.getName());
-                    holder.totalTV.setText("Total: " + model.getTotal());
-                    holder.itemProductTV.setText("(" + model.getQuantity() + " item" + ")");
-                    holder.addressTV.setText(model.getAddress());
-                    holder.phoneTV.setText("-  " + model.getPhone());
-                    holder.date_timeTV.setText("Date: " + model.getDateTime());
-                    holder.statusTV.setText("Status: " + model.status);
-                    Picasso.get().load(model.getImage()).fit().into(holder.image);
+                    if (model.getStatus().equals("shipping")) {
+                        holder.nameTV.setText(model.getName());
+                        holder.totalTV.setText("Total: " + model.getTotal());
+                        holder.itemProductTV.setText("(" + model.getQuantity() + " item" + ")");
+                        holder.addressTV.setText(model.getAddress());
+                        holder.phoneTV.setText("-  " + model.getPhone());
+                        holder.date_timeTV.setText("Date: " + model.getDateTime());
+                        holder.statusTV.setText("Status: " + model.status);
+                        Picasso.get().load(model.getImage()).fit().into(holder.image);
+                    } else {
+                        holder.itemView.setVisibility(View.GONE);
+                        holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
+                    }
                 }
 
                 @NonNull

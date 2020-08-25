@@ -80,11 +80,10 @@ public class CheckoutOrder extends AppCompatActivity {
 
     private String getInformationAndDataOrder() {
         final String idOrder = refOrder.child("Orders").push().getKey();
-        final ArrayList<Cart> carts = new ArrayList<Cart>();
+        final HashMap<String, Object> cartMap = new HashMap<>();
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                final HashMap<String, Object> cartMap = new HashMap<>();
                 for (DataSnapshot snap : dataSnapshot.getChildren()) {
                     Cart cart = snap.getValue(Cart.class);
                     Log.d("AAA", cart.getName() + " - " + cart.getPid());
@@ -92,34 +91,33 @@ public class CheckoutOrder extends AppCompatActivity {
                             .child("products").push().getKey();
                     cartMap.put(key, cart);
                 }
-
-                HashMap<String, Object> data = new HashMap<>();
-                data.put("orderId", idOrder);
-                data.put("name", Prevalent.currentOnLineUsers.getDisplayName());
-                data.put("phone", Prevalent.currentOnLineUsers.getPhone());
-                data.put("image", Prevalent.currentOnLineUsers.getPhotoUrl());
-                data.put("status", "pending");
-                data.put("dateTime", time + " " + date);
-                data.put("address", addressUser);
-                data.put("quantity", item);
-                data.put("total", total);
-                data.put("order", "pending_" + Prevalent.currentOnLineUsers.getUid());
-
-                refOrder.child("Orders").child(idOrder).setValue(data)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                refOrder.child("Orders").child(idOrder).child("products").setValue(cartMap);
-                            }
-                        });
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-//        refOrder.child("Cart List").child("User")
-//                .child(Prevalent.currentOnLineUsers.getUid()).removeValue();
+
+        HashMap<String, Object> data = new HashMap<>();
+        data.put("orderId", idOrder);
+        data.put("name", Prevalent.currentOnLineUsers.getDisplayName());
+        data.put("phone", Prevalent.currentOnLineUsers.getPhone());
+        data.put("image", Prevalent.currentOnLineUsers.getPhotoUrl());
+        data.put("status", "pending");
+        data.put("dateTime", time + " " + date);
+        data.put("address", addressUser);
+        data.put("quantity", item);
+        data.put("total", total);
+        data.put("uid", Prevalent.currentOnLineUsers.getUid());
+        refOrder.child("Orders").child(idOrder).setValue(data)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        refOrder.child("Orders").child(idOrder).child("products").setValue(cartMap);
+                    }
+                });
+        refOrder.child("Cart List").child("User")
+                .child(Prevalent.currentOnLineUsers.getUid()).removeValue();
         return idOrder;
     }
 
@@ -205,14 +203,16 @@ public class CheckoutOrder extends AppCompatActivity {
     }
 
     private void showData() {
-        Picasso.get().load(Prevalent.currentOnLineUsers.photoUrl).fit().into(imageView);
-        nameTV.setText(Prevalent.currentOnLineUsers.displayName);
-        phoneTV.setText("-  " + Prevalent.currentOnLineUsers.phone);
-        addressTV.setText(addressUser);
-        time_and_date_TV.setText(time + " - Today " + date);
+        if (Prevalent.currentOnLineUsers != null) {
+            Picasso.get().load(Prevalent.currentOnLineUsers.photoUrl).fit().into(imageView);
+            nameTV.setText(Prevalent.currentOnLineUsers.displayName);
+            phoneTV.setText("-  " + Prevalent.currentOnLineUsers.phone);
+            addressTV.setText(addressUser);
+            time_and_date_TV.setText(time + " - Today " + date);
 
-        itemOrderSummaryTV.setText("You have " + item + " items in your shoping cart.");
-        totalPriceOrderTV.setText("Total: " + total);
+            itemOrderSummaryTV.setText("You have " + item + " items in your shoping cart.");
+            totalPriceOrderTV.setText("Total: " + total);
+        }
     }
 
     private void mapping() {

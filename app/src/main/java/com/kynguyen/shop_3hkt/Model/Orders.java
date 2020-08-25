@@ -4,9 +4,9 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
 public class Orders {
-  public String dateTime, name, phone, quantity, status, total,image, address, orderId;
+  public String dateTime, name, phone, quantity, status, total,image, address, orderId, uid;
 
-  public Orders(String dateTime, String name, String phone, String quantity, String status, String total, String image, String address, String orderId) {
+  public Orders(String dateTime, String name, String phone, String quantity, String status, String total, String image, String address, String orderId, String uid) {
     this.dateTime = dateTime;
     this.name = name;
     this.phone = phone;
@@ -16,6 +16,7 @@ public class Orders {
     this.image = image;
     this.address = address;
     this.orderId = orderId;
+    this.uid = uid;
   }
 
   public String getAddress() {
@@ -91,5 +92,13 @@ public class Orders {
 
   public void setImage(String image) {
     this.image = image;
+  }
+
+  public String getUid() {
+    return uid;
+  }
+
+  public void setUid(String uid) {
+    this.uid = uid;
   }
 }
