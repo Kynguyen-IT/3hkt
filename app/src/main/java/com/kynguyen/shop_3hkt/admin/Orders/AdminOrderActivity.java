@@ -83,7 +83,6 @@ public class AdminOrderActivity extends AppCompatActivity {
                       Toast.makeText(AdminOrderActivity.this, "Order with id: " + model.getOrderId() + " status change to Finish", Toast.LENGTH_SHORT).show();
                     }
                 });
-
             }
 
             @NonNull

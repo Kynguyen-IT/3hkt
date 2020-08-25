@@ -159,7 +159,7 @@ public class HomeFragment extends Fragment {
         Intent intent = new Intent(viewHome.getContext(), FetchAddressIntentService.class);
         intent.putExtra(Constants.RECEIVER, resultReceiver);
         intent.putExtra(Constants.LOCATION_DATA_EXTRA, location);
-        getActivity().startService(intent);
+        viewHome.getContext().startService(intent);
     }
 
     @Override
