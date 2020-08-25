@@ -65,7 +65,7 @@ public class AdminOrderActivity extends AppCompatActivity {
                 }
                 holder.itemProductTV.setText(quantity);
                 holder.addressTV.setText(model.getAddress());
-                holder.phoneTV.setText("-  " + model.getPhone());
+                holder.phoneTV.setText(model.getPhone());
                 holder.date_timeTV.setText("Date: " + model.getDateTime());
                 holder.statusTV.setText("Status: " + model.status);
                 Picasso.get().load(model.getImage()).fit().into(holder.image);

@@ -54,14 +54,21 @@ public class HistoryFragment extends Fragment {
                 @Override
                 protected void onBindViewHolder(@NonNull final ShowOrderAdminViewHolder holder, int position, @NonNull final Orders model) {
                     if (model.getStatus().equals("finish")) {
+                        String quantity = "(" + model.getQuantity() + " item)";
+                        if (Integer.parseInt(model.getQuantity()) > 1) {
+                            quantity = "(" + model.getQuantity() + " items)";
+                        }
                         holder.nameTV.setText(model.getName());
                         holder.totalTV.setText("Total: " + model.getTotal());
-                        holder.itemProductTV.setText("(" + model.getQuantity() + " item" + ")");
+                        holder.itemProductTV.setText(quantity);
                         holder.addressTV.setText(model.getAddress());
-                        holder.phoneTV.setText("-  " + model.getPhone());
+                        holder.phoneTV.setText(model.getPhone());
                         holder.date_timeTV.setText("Date: " + model.getDateTime());
                         holder.statusTV.setText("Status: " + model.status);
                         Picasso.get().load(model.getImage()).fit().into(holder.image);
+                        relativeLayout.setVisibility(View.INVISIBLE);
+                        holder.admin_order_ship.setVisibility(View.GONE);
+                        holder.admin_order_finish.setVisibility(View.GONE);
                     }else {
                         holder.itemView.setVisibility(View.GONE);
                         holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
