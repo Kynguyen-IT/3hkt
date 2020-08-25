@@ -72,6 +72,21 @@
                 android:layout_below="@+id/address_product_cart_holder"
                 ></TextView>
 
+            <TextView
+                android:id="@+id/status_cart_holder"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="3dp"
+                android:text="sdgsfdhgf"
+                android:textSize="14dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/address_product_cart_holder"
+                android:visibility="invisible"
+                ></TextView>
+
+
         </RelativeLayout>
     </RelativeLayout>
 

@@ -12,7 +12,7 @@ import com.kynguyen.shop_3hkt.R;
 
 public class ShowCartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
   public ImageView imageView;
-  public TextView price, address, name, quantity;
+  public TextView price, address, name, quantity, status;
   public itemClickLitsner listenr;
   public ShowCartViewHolder(@NonNull View itemView) {
     super(itemView);
@@ -21,6 +21,7 @@ public class ShowCartViewHolder extends RecyclerView.ViewHolder implements View.
     address = itemView.findViewById(R.id.address_product_cart_holder);
     name = itemView.findViewById(R.id.name_product_cart_holder);
     quantity = itemView.findViewById(R.id.quantity_product_cart_holder);
+    status = itemView.findViewById(R.id.status_cart_holder);
   }
 
 

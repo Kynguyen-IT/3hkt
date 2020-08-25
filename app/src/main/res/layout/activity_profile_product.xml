@@ -367,6 +367,7 @@
                     android:textColor="#000"
                     android:textSize="18dp"
                     android:gravity="center"
+                    android:visibility="invisible"
                     ></TextView>
 
                 <androidx.recyclerview.widget.RecyclerView
