@@ -9,13 +9,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.kynguyen.shop_3hkt.Intetfave.itemClickLitsner;
+import com.kynguyen.shop_3hkt.Interface.itemClickListener;
 import com.kynguyen.shop_3hkt.R;
 
 public class ShowOrderAdminViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     public ImageView image;
     public TextView nameTV, phoneTV, statusTV, addressTV, date_timeTV, itemProductTV, totalTV;
-    public itemClickLitsner listenr;
+    public itemClickListener listenr;
     public Button admin_order_ship, admin_order_finish;
     public RelativeLayout rootOrder;
 
@@ -39,7 +39,7 @@ public class ShowOrderAdminViewHolder extends RecyclerView.ViewHolder implements
         listenr.onClick(v, getAdapterPosition(), false);
     }
 
-    public void setListenr(itemClickLitsner listenr) {
+    public void setListenr(itemClickListener listenr) {
         this.listenr = listenr;
     }
 }

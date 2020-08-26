@@ -8,14 +8,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.kynguyen.shop_3hkt.Intetfave.itemClickLitsner;
+import com.kynguyen.shop_3hkt.Interface.itemClickListener;
 import com.kynguyen.shop_3hkt.R;
 
 public class ShowProductsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     public ImageView imageProduct;
     public TextView address, name, time, range, description;
     public ImageView heart_product;
-    public itemClickLitsner listen;
+    public itemClickListener listen;
     public RelativeLayout relativeLayout;
 
     public ShowProductsViewHolder(@NonNull View itemView) {
@@ -36,7 +36,7 @@ public class ShowProductsViewHolder extends RecyclerView.ViewHolder implements V
         listen.onClick(v, getAdapterPosition(), false);
     }
 
-    public void setListen(itemClickLitsner listenr) {
+    public void setListen(itemClickListener listenr) {
         this.listen = listenr;
     }
 }

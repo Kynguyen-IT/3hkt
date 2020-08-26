@@ -6,7 +6,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.kynguyen.shop_3hkt.Intetfave.itemClickLitsner;
+import com.kynguyen.shop_3hkt.Interface.itemClickListener;
 import com.kynguyen.shop_3hkt.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -14,7 +14,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class adminCategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
   public CircleImageView imageView;
   public TextView textView;
-  public itemClickLitsner listenr;
+  public itemClickListener listenr;
 
   public adminCategoryViewHolder(@NonNull View itemView) {
     super(itemView);
@@ -27,7 +27,7 @@ public class adminCategoryViewHolder extends RecyclerView.ViewHolder implements 
     listenr.onClick(v, getAdapterPosition(), false);
   }
 
-  public void setListenr(itemClickLitsner listenr) {
+  public void setListenr(itemClickListener listenr) {
     this.listenr = listenr;
   }
 }
