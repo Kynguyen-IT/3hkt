@@ -197,7 +197,7 @@ public class AddProduct extends AppCompatActivity {
             if(task.isSuccessful()){
               downloadImagesURL = task.getResult().toString();
               Toast.makeText(AddProduct.this, "got the Product image URL Successfully..", Toast.LENGTH_SHORT).show();
-              SaveProductInfotoDatabase();
+              SaveProductInfoToDatabase();
             }
           }
         });
@@ -205,20 +205,20 @@ public class AddProduct extends AppCompatActivity {
     });
   }
 
-  private void SaveProductInfotoDatabase() {
+  private void SaveProductInfoToDatabase() {
       String Pid = ref.child("products").push().getKey();
-      HashMap<String,Object> productdata = new HashMap<>();
-      productdata.put("pid", Pid);
-      productdata.put("name",nameET.getText().toString());
-      productdata.put("address",addressET.getText().toString());
-      productdata.put("description",descriptionET.getText().toString());
-      productdata.put("price", priceET.getText().toString());
-      productdata.put("idCategory", getidcate);
-      productdata.put("lat", lat);
-      productdata.put("lng", lng);
-      productdata.put("image", downloadImagesURL);
+      HashMap<String,Object> productData = new HashMap<>();
+      productData.put("pid", Pid);
+      productData.put("name",nameET.getText().toString());
+      productData.put("address",addressET.getText().toString());
+      productData.put("description",descriptionET.getText().toString());
+      productData.put("price", priceET.getText().toString());
+      productData.put("idCategory", getidcate);
+      productData.put("lat", lat);
+      productData.put("lng", lng);
+      productData.put("image", downloadImagesURL);
 
-      ref.child("products").child(Pid).setValue(productdata);
+      ref.child("products").child(Pid).setValue(productData);
 
       sharedPreferences.edit().clear().commit();
       startActivity(new Intent(AddProduct.this, AdminProductsActivity.class));
