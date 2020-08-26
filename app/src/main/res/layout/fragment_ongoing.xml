@@ -16,7 +16,7 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/onging" />
+            android:background="@drawable/ongoing" />
 
         <TextView
             android:id="@+id/title_ongoing_show_noOrder"

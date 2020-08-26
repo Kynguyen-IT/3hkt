@@ -39,7 +39,7 @@ public class UserInformationActivity extends AppCompatActivity {
     private Button updateBtn;
     private String checker;
     private Uri photoUrl;
-    private StorageReference storageProfilePrictureRef;
+    private StorageReference storageProfilePictureRef;
     private StorageTask uploadTask;
     private String myUrl = "";
 
@@ -49,7 +49,7 @@ public class UserInformationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_information);
         mapping();
 
-        storageProfilePrictureRef = FirebaseStorage.getInstance().getReference().child("Profile pictures");
+        storageProfilePictureRef = FirebaseStorage.getInstance().getReference().child("Profile pictures");
         // set User ui
         setUserUi();
 
@@ -98,7 +98,7 @@ public class UserInformationActivity extends AppCompatActivity {
         if (photoUrl != null) {
             final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             final String Uid = user.getUid();
-            final StorageReference fileRef = storageProfilePrictureRef.child(Uid + "jpg");
+            final StorageReference fileRef = storageProfilePictureRef.child(Uid + "jpg");
             uploadTask = fileRef.putFile(photoUrl);
 
             uploadTask.continueWithTask(new Continuation() {
