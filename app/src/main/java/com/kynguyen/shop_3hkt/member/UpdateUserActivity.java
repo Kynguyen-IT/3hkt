@@ -73,6 +73,7 @@ public class UpdateUserActivity extends AppCompatActivity {
     Toast.makeText(this, "update successfully", Toast.LENGTH_SHORT).show();
     Intent intent = new Intent(UpdateUserActivity.this, UserInformationActivity.class);
     startActivity(intent);
+    finish();
   }
 
   private void setTextUiUser() {
