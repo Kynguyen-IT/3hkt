@@ -193,10 +193,14 @@ public class SignInActivity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
+            String image = "https://www.alliancerehabmed.com/wp-content/uploads/icon-avatar-default.png";
+            if (user.getPhotoUrl() != null) {
+                image = user.getPhotoUrl().toString();
+            }
             final String Uid = user.getUid();
             String Email = user.getEmail();
             String name = user.getDisplayName();
-            String image = user.getPhotoUrl().toString();
+
             // add user to firebase database
             HashMap<String, Object> userdata = new HashMap<>();
             userdata.put("email", Email);
